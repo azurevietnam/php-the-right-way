@@ -1,16 +1,17 @@
 ---
+title: Bảo mật ứng dụng web
 isChild: true
 anchor:  web_application_security
 ---
 
-## Web Application Security {#web_application_security_title}
+## Bảo mật ứng dụng web {#web_application_security_title}
 
-There are bad people ready and willing to exploit your web application. It is important that you take necessary
-precautions to harden your web application's security. Luckily, the fine folks at
-[The Open Web Application Security Project][1] (OWASP) have compiled a comprehensive list of known security issues and
-methods to protect yourself against them. This is a must read for the security-conscious developer. [Survive The Deep End: PHP Security][3] by Padraic Brady is also another good web application security guide for PHP.
+Để bảo vệ ứng dụng web của mình khỏi các hacker, việc nâng cao bảo mật là cầng thiết. [The Open Web Application Security Project][1] (OWASP) 
+cung cấp một danh sách các vấn đề bảo mật và phòng chống chúng, nếu bạn muốn viết một ứng dụng bảo mật thì đây 
+là tài liệu nhất định phải đọc. [Survive The Deep End: PHP Security][3] (Padraic Brady) cũng là một hướng dẫn 
+tốt cho bảo mật ứng dụng Web.
 
-* [Read the OWASP Security Guide][2]
+* [Đọc thêm về OWASP Security Guide][2]
 
 
 [1]: https://www.owasp.org/

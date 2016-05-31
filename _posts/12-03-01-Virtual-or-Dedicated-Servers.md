@@ -1,43 +1,42 @@
 ---
+title: Server ảo hay Dedicated Servers
 isChild: true
 anchor:  virtual_or_dedicated_servers
 ---
 
-## Virtual or Dedicated Servers {#virtual_or_dedicated_servers_title}
+## Server ảo hay Dedicated Servers {#virtual_or_dedicated_servers_title}
 
-If you are comfortable with systems administration, or are interested in learning it, virtual or dedicated servers give
-you complete control of your application's production environment.
 
-### nginx and PHP-FPM
+Nếu bạ có thể làm việc với các hệ thống administration, hoặc muốn học nó, Server ảo hoặc Dedicated Servers 
+cho bạn toàn quyền điều khiển môi trường ứng dụng.
 
-PHP, via PHP's built-in FastCGI Process Manager (FPM), pairs really nicely with [nginx], which is a lightweight,
-high-performance web server. It uses less memory than Apache and can better handle more concurrent requests. This is
-especially important on virtual servers that don't have much memory to spare.
+### nginx và PHP-FPM
 
-* [Read more on nginx][nginx]
-* [Read more on PHP-FPM][phpfpm]
-* [Read more on setting up nginx and PHP-FPM securely][secure-nginx-phpfpm]
+FastCGI Process Manager (FPM) có sẵn trong PHP, tương thích với [nginx], một web server nhẹ, hiệu năng cao, 
+dùng ít bộ nhớ hơn Apache và quản lý nhiều request tốt hơn. Điều này cực kỳ quan trọng vì trong máy chủ ảo không có nhiều bộ nhớ.
 
-### Apache and PHP
+* [Xem thêm về nginx][nginx]
+* [Xem thêm về PHP-FPM][phpfpm]
+* [Xem thêm về cài đặt nginx và PHP-FPM an toàn][secure-nginx-phpfpm]
 
-PHP and Apache have a long history together. Apache is wildly configurable and has many available 
-[modules][apache-modules] to extend functionality. It is a popular choice for shared servers and an easy setup for PHP
-frameworks and open source apps like WordPress. Unfortunately, Apache uses more resources than nginx by default and
-cannot handle as many visitors at the same time.
+### Apache và PHP
 
-Apache has several possible configurations for running PHP. The most common and easiest to setup is the [prefork MPM]
-with mod_php5. While it isn't the most memory efficient, it is the simplest to get working and to use. This is probably
-the best choice if you don't want to dig too deeply into the server administration aspects. Note that if you use
-mod_php5 you MUST use the prefork MPM.
+PHP và Apache có lịch sử lâu đời cùng nhau. Apache có nhiều thiết đặt và có sẵn nhiều [modules][apache-modules] 
+để kế thừa các chức năng. Là lựa chọn phổ biến cho các shared server và dễ cài đặt cho các PHP framework hay ứng 
+dụng mã nguồn mở như Wordpress. Nhưng không may Apache dùng nhiều tài nguyên hơn nginx và không thể quản lý nhiều 
+visitor cùng lúc.
 
-Alternatively, if you want to squeeze more performance and stability out of Apache then you can take advantage of the
-same FPM system as nginx and run the [worker MPM] or [event MPM] with mod_fastcgi or mod_fcgid. This configuration will
-be significantly more memory efficient and much faster but it is more work to set up.
+Apache có vài thiết đặt cho PHP, thông dụng và dễ nhất là [prefork MPM] với mod_php5. Mặc dù không phải là 
+hiệu quả nhất cho bộ nhớ, nhưng đơn giản nhất để dùng. Ghi chú nếu dùng mod_php5 bạn phải dùng prefork MPM.
 
-* [Read more on Apache][apache]
-* [Read more on Multi-Processing Modules][apache-MPM]
-* [Read more on mod_fastcgi][mod_fastcgi]
-* [Read more on mod_fcgid][mod_fcgid]
+Nếu bạn muốn siết chặt hơn nữa hiệu năng và sự ổn định bên ngoài Apache, sau đó bạn có thể tận dùng các ưu thế của 
+cùng hệ thống FPM như nginx và chạy [worker MPM] hoặc [event MPM] với mod_fastcgi hay mod_fcgid. Thiết đặt này sẽ 
+tận dụng bộ nhớ hiệu quả hơn và nhanh hơn hiều nhưng phải set up nhiều hơn.
+
+* [Đọc thêm về Apache][apache]
+* [Đọc thêm về Multi-Processing Modules][apache-MPM]
+* [Đọc thêm về mod_fastcgi][mod_fastcgi]
+* [Đọc thêm về mod_fcgid][mod_fcgid]
 
 
 [nginx]: http://nginx.org/

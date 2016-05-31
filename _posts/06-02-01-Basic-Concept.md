@@ -1,15 +1,17 @@
 ---
+title: Khái niệm cơ bản
 isChild: true
 anchor:  basic_concept
 ---
 
-## Basic Concept {#basic_concept_title}
+## Khái niệm cơ bản {#basic_concept_title}
 
-We can demonstrate the concept with a simple, yet naive example.
+Chúng ta có thể giải thích khái niệm một cách đơn giản như sau:
 
-Here we have a `Database` class that requires an adapter to speak to the database. We instantiate the adapter in the
-constructor and create a hard dependency. This makes testing difficult and means the `Database` class is very tightly
-coupled to the adapter.
+Ta có một class `Database` cần một adapter để giao tiếp với database. 
+Ta khởi tạo (instantiate) adapter trong constructor và tạo một hard dependency, 
+làm cho việc testing khó khăn và có nghĩa là class `Database` "dính chặt" với adapter.
+
 
 {% highlight php %}
 <?php
@@ -28,7 +30,7 @@ class Database
 class MysqlAdapter {}
 {% endhighlight %}
 
-This code can be refactored to use Dependency Injection and therefore loosen the dependency.
+Đoạn code này có thể được cấu trúc lại để dùng Dependency Injection và vì thế nới lỏng dependency.
 
 {% highlight php %}
 <?php
@@ -47,6 +49,7 @@ class Database
 class MysqlAdapter {}
 {% endhighlight %}
 
-Now we are giving the `Database` class its dependency rather than it creating it itself. We could even create a method
-that would accept an argument of the dependency and set it that way, or if the `$adapter` property was `public` we
-could set it directly.
+
+Bây giờ chúng ta tạo dependency của class `Database` hơn là tạo nên chính nó. Chúng ta cũng nên tạo một 
+phương thức chấp nhận tham số của dependency và cài dặt nó, hoặc nếu thuộc tính `$adapter`  là public 
+chúng ta có thể cài đặt nó trực tiếp.

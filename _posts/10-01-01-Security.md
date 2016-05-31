@@ -1,5 +1,6 @@
 ---
+title: Bảo mật
 anchor: security
 ---
 
-# Security {#security_title}
+# Bảo mật (Security) {#security_title}

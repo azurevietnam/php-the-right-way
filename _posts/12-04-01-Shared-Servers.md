@@ -5,10 +5,8 @@ anchor:  shared_servers
 
 ## Shared Servers {#shared_servers_title}
 
-PHP has shared servers to thank for its popularity. It is hard to find a host without PHP installed, but be sure it's
-the latest version. Shared servers allow you and other developers to deploy websites to a single machine. The upside to
-this is that it has become a cheap commodity. The downside is that you never know what kind of a ruckus your
-neighboring tenants are going to create; loading down the server or opening up security holes are the main concerns. If
-your project's budget can afford to avoid shared servers you should.
+PHP có các shared server do chúng khá phổ biến, nhưng bạn cũng nên chú ý phiên bản PHP được cài đặt. 
+Shared server cho phép bạn triển khai website. Mặt tốt của shared server là nó rẻ, nhưng bật các thiết dặt bảo mật là cần thiết.
+Nếu ngân sách của dự án có thể tránh việc dùng shared server thì bạn nên cân nhắc.
 
-To make sure your shared servers are offering the latest versions of PHP, check out [PHP Versions](http://phpversions.info/shared-hosting/).
+Kiểm tran rằng shared xerver của bạn cung cấp phiên bản mới nhất của PHP >>> [PHP Versions](http://phpversions.info/shared-hosting/).

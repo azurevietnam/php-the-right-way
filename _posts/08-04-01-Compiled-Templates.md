@@ -3,20 +3,23 @@ isChild: true
 anchor:  compiled_templates
 ---
 
-## Compiled Templates {#compiled_templates_title}
+## Biên dịch Template {#compiled_templates_title}
 
-While PHP has evolved into a mature, object oriented language, it [hasn't improved much][article_templating_engines] as
-a templating language. Compiled templates, like [Twig], [Brainy], or [Smarty]*, fill this void by offering a new syntax that has
-been geared specifically to templating. From automatic escaping, to inheritance and simplified control structures,
-compiled templates are designed to be easier to write, cleaner to read and safer to use. Compiled templates can even be
-shared across different languages, [Mustache] being a good example of this. Since these templates must be compiled
-there is a slight performance hit, however this is very minimal when proper caching is used.
+Trong khi PHP ngày càng phát triển, trở thành ngôn ngữ hướng đối tượng, nó vẫn
+[không cải thiện nhiều][article_templating_engines] như là một ngôn ngữ template
+Các template dược biên dịch như [Twig], [Brainy], 
+hay [Smarty]*, lắp đầy khoảng trống đó bằng các cung cấp các cú pháp mới dành riêng cho template. 
+Từ tự động escape, tới kế thừa và rút gọn cấu trúc điều khiển,
+các template được biên dịch được thiết kế để dễ viết, sạch hơn, dễ đọc hơn an toàn khi dùng. 
+Các template được biên dịch có thể được chia sẻ qua nhiều ngôn ngữ, ví dụ [Mustache]. 
+Khi các template được biên dịch, hiệu năng sẽ bị giảm đôi chút, nhưng nếu sử dũng caching hợp lý 
+đó không còn là vấn đề lớn.
 
-**While Smarty offers automatic escaping, this feature is NOT enabled by default.*
+**Smarty có tính năng tự động escape, nhưng không được bật mặc định.*
 
-### Simple example of a compiled template
+### Ví dụ đơn giản của template được biên dịch
 
-Using the [Twig] library.
+Sử dụng thư viện [Twig].
 
 {% highlight html+jinja %}
 {% raw %}
@@ -29,9 +32,9 @@ Using the [Twig] library.
 {% endraw %}
 {% endhighlight %}
 
-### Example of compiled templates using inheritance
+### Ví dụ của template được biên dịch về kế thừa
 
-Using the [Twig] library.
+Sử dụng thư viện [Twig].
 
 {% highlight html+jinja %}
 {% raw %}

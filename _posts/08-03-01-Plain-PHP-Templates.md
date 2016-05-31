@@ -5,19 +5,20 @@ anchor:  plain_php_templates
 
 ## Plain PHP Templates {#plain_php_templates_title}
 
-Plain PHP templates are simply templates that use native PHP code. They are a natural choice since PHP is actually a
-template language itself. That simply means that you can combine PHP code within other code, like HTML. This is
-beneficial to PHP developers as there is no new syntax to learn, they know the functions available to them, and their
-code editors already have PHP syntax highlighting and auto-completion built-in. Further, plain PHP templates tend to be
-very fast as no compiling stage is required.
+Plain PHP template là templates được dùng mặc định trong PHP code. 
+Nó là lựa chọn tự nhiên vì PHP thật ra là một ngôn ngữ template. 
+Có nghĩa là bạn có thể kết hợp PHP với các ngôn ngữ giao diện khác, như HTML. Vì vậy các 
+lập trình viên PHP không cần phải học thêm cú pháp mới, họ biết nên dùng các hàm nào, 
+và các IDE của họ cũng có các trình nhắc cú pháp. 
+Hơn nữa, plain PHP templates nhanh hơn vì không phải biên dịch.
 
-Every modern PHP framework employs some kind of template system, most of which use plain PHP by default. Outside of
-frameworks, libraries like [Plates][plates] or [Aura.View][aura] make working with plain PHP templates easier by
-offering modern template functionality such as inheritance, layouts and extensions.
+Mỗi PHP framework hiện đại cung cấp một loại hệ thống template, đa số dùng plain PHP như mặc định. 
+Bên ngoài framework, các thư viện như [Plates][plates] hay [Aura.View][aura] khiến cho việc làm việc 
+với plain PHP templatesdễ dàng hơn bằng cách cung cấp các chức năng template mới như kế thừa, layout, và extension.
 
-### Simple example of a plain PHP template
+### Ví dụ đơn giản của plain PHP template
 
-Using the [Plates][plates] library.
+Sử dụng thư viện [Plates][plates].
 
 {% highlight php %}
 <?php // user_profile.php ?>
@@ -30,9 +31,9 @@ Using the [Plates][plates] library.
 <?php $this->insert('footer') ?>
 {% endhighlight %}
 
-### Example of plain PHP templates using inheritance
+### Ví dụ plain PHP templates về kế thừa
 
-Using the [Plates][plates] library.
+Sử dụng thư viện [Plates][plates].
 
 {% highlight php %}
 <?php // template.php ?>

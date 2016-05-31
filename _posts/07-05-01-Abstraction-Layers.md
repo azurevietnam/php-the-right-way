@@ -1,19 +1,18 @@
 ---
 isChild: true
-title:   Abstraction Layers
+title:   Lớp Abstraction
 anchor:  databases_abstraction_layers
 ---
 
-## Abstraction Layers {#databases_abstraction_layers_title}
+## Lớp Abstraction {#databases_abstraction_layers_title}
 
-Many frameworks provide their own abstraction layer which may or may not sit on top of [PDO][1]. These will often
-emulate features for one database system that is missing from another by wrapping your queries in PHP methods, giving
-you actual database abstraction instead of just the connection abstraction that PDO provides. This will of course add a
-little overhead, but if you are building a portable application that needs to work with MySQL, PostgreSQL and SQLite
-then a little overhead will be worth it the sake of code cleanliness.
+Nhiều framework cung cấp lớp abstraction của nó có thể hoạc không tốt hơn [PDO][1]. 
+Các lớp abstraction này thêm các tính năng còn thiếu của các lớp khác, cho bạn một 
+database abstractionthay vì chỉ connection abstraction mà PDO cung cấp. Nó sẽ thêm một số tính năng nâng cao, 
+nhưng nó sẽ tốt nếu bạn bạn muốn xây dựng một ứng dụng linh hoạt cần kết nối tới MySQL, PostgreSQL và SQLite
 
-Some abstraction layers have been built using the [PSR-0][psr0] or [PSR-4][psr4] namespace standards so can be
-installed in any application you like:
+Vài lớp abstraction được xây dựng theo [PSR-0][psr0] 
+hoặc [PSR-4][psr4] có thể cài dặt lên bất kỳ ứng dụng nào:
 
 * [Aura SQL][6]
 * [Doctrine2 DBAL][2]

@@ -1,39 +1,44 @@
-# PHP: The Right Way
+# PHP: The Right Way (Tiếng Việt)
 
-## Overview
+## Tổng quát
 
-This is the GitHub Pages repository for the _PHP: The Right Way_ project.
+Đây là trang GitHub của _PHP: The Right Way_ Tiếng Việt.
 
-* This website is a Jekyll project.
-* Each section and sub-section are a Markdown file in `_posts/`.
-* Sub-sections have `isChild: true` in their front matter.
-* The navigation and page structure are automatically generated.
+* Dự án này sử dụng Jekyll.
+* Nội dung các phần chứa trong file Markdown trong thư mục `_posts/`.
+* Các phần con có `isChild: true`.
+* Navigation và cấu trúc trang được tạo tự động.
 
-## Spread the Word!
+## Giúp quảng cáo!
 
-_PHP: The Right Way_ has web banner images you can use on your website. Show your support, and let new PHP
-developers know where to find good information!
+_PHP: The Right Way_ có các ảnh banner bạn có thể dùng để đưa vào website của mình. 
+Thể hiện sự hỗ trợ của bạn, phổ biến tài liệu hữu ích này cho nhiều người biết!
 
 [See Banner Images](http://www.phptherightway.com/banners.html)
 
-## How to Contribute
+## Làm thế nào để đóng góp
 
-1. Fork and edit
-2. Optionally install [Ruby](https://rvm.io/rvm/install/) with [Jekyll](https://github.com/mojombo/jekyll/) gem to preview locally
-3. Submit pull request for consideration
+1. Fork và chỉnh sửa
+2. Có thể cài [Ruby](https://rvm.io/rvm/install/) và [Jekyll](https://github.com/mojombo/jekyll/) gem to để review trên máy cục bộ
+3. Gởi pull request
 
-### Contributor Style Guide
+### Qui chuẩn đóng góp
 
-1. Use American English spelling (*primary English repo only*)
-2. Use four (4) spaces to indent text; do not use tabs.
-3. Wrap all text to 120 characters.
-4. Code samples should adhere to PSR-1 or higher.
+1. Dùng tiếng Anh Mỹ (*Chỉ dùng cho bản tiếng Anh*)
+2. Dùng 4 khoảng trắng thay cho tab
+3. Các văn bản tối đa 120 ký tự
+4. Code ví dụ tuân theo chuẩn PSR-1 hay cao hơn.
 
-## Where
+
+## Các bản dịch khác
+
+_PHP: The Right Way_ đã được biên dịch ra nhiều ngôn ngữ khác nhau, 
+trong đó có [Tiếng Việt](https://nhaancs.github.io/php-the-right-way/):
 
 <http://www.phptherightway.com>
 
 * [English](http://www.phptherightway.com)
+* [Vietnamese] (https://nhaancs.github.io/php-the-right-way/)
 * [Bulgarian](http://bg.phptherightway.com)
 * [Chinese (Simplified)](http://laravel-china.github.io/php-the-right-way/)
 * [Chinese (Traditional)](http://laravel-taiwan.github.io/php-the-right-way)
@@ -55,30 +60,34 @@ developers know where to find good information!
 * [Turkish](http://hkulekci.github.io/php-the-right-way/)
 * [Ukrainian](http://iflista.github.com/php-the-right-way)
 
-### Translations
+### Dịch thuật
 
-If you are interested in translating _PHP: The Right Way_, fork this repo on GitHub and publish your localized fork to your own GitHub Pages account. We'll link to your translation from the primary document.
+Nếu bạn muốn dịch _PHP: The Right Way_, fork dự án trên GitHub và xuất bản bản dịch trên trang github của bạn. Chúng tôi sẽ liên kết tới bản dịch của bạn trên website.
 
-To avoid fragmentation and reader confusion, please choose one of these options:
+Vui lòng chọn một trong các lựa chọn sau:
 
-1. We link to your GitHub Pages fork with `[username].github.io/php-the-right-way`
-2. We link to your GitHub Pages fork with a subdomain (e.g. "ru.phptherightway.com")
+1. Chúng tôi sẽ liên kết tới trang Github của bạn `[username].github.io/php-the-right-way`
+2. Chúng tôi sẽ liên kết tới trang Github của bạn với subdomain (ví dụ. "ru.phptherightway.com")
 
-If you use a subdomain, enter the subdomain into the `CNAME` file, and ask us to setup DNS for you. If you do not use a subdomain, remove the `CNAME` file entirely else your fork will not build when pushed.
+Nếu bạn dùng subdomain, nhập subdomain vào file `CNAME` và yêu cầu chúng tôi setup 
+DNS cho bạn. Nếu bạn không dùng sub domain thì hãy xóa file `CNAME`.
 
-Add information about your translation in the [wiki page](https://github.com/codeguy/php-the-right-way/wiki/Translations).
+Thêm thông tin về bản dịch của bạn tại [wiki page](https://github.com/codeguy/php-the-right-way/wiki/Translations).
 
-When your translation is ready, open an issue on the Issue Tracker to let us know.
+Khi nào bản dịch sẵn sàng, mở một issue trên Issue Tracker để báo cho chúng tôi biết.
 
-## Why
+## Giới thiệu?
 
-There's been a lot of discussion lately about how the PHP community lacks sufficient, credible information for programmers new to PHP. This repository aims to solve this problem.
+_PHP: The Right Way_ là một nguồn tham khảo uy tín cho các 
+bạn mới làm quen với PHP, cung cấp các qui chuẩn khi viết code, và liên kết tới các bài 
+hướng dẫn chất lượng, có nội dung tốt tại thời diểm thao khảo.
 
-## Who
+## Tác giả và người dịch
 
-My name is [Josh Lockhart](http://twitter.com/codeguy). I'm the author of the [Slim Framework](http://www.slimframework.com/), and I work for [New Media Campaigns](http://www.newmediacampaigns.com/).
+- Tác giả: [Josh Lockhart](http://twitter.com/codeguy). Tác giả của [Slim Framework](http://www.slimframework.com/), làm việc tại [New Media Campaigns](http://www.newmediacampaigns.com/).
+- Người dịch: Nhân CS [Facebook](https://www.facebook.com/nhaancs) | [Linkedin](linkedin.com/in/nhaancs) | [Twitter](https://twitter.com/nhaancs) | [Github](https://github.com/nhaancs)
 
-### Collaborators
+### Đồng tác giả
 
 * [Kris Jordan](http://krisjordan.com/)
 * [Phil Sturgeon](http://philsturgeon.co.uk/)

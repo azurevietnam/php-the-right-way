@@ -1,18 +1,19 @@
 ---
+title: Thông báo lỗi
 isChild: true
 anchor:  error_reporting
 ---
 
-## Error Reporting {#error_reporting_title}
+## Thông báo lỗi (Error Reporting) {#error_reporting_title}
 
-Error logging can be useful in finding the problem spots in your application, but it can also expose information about
-the structure of your application to the outside world. To effectively protect your application from issues that could
-be caused by the output of these messages, you need to configure your server differently in development versus
-production (live).
 
-### Development
+Thông báo lỗi có thể hữu ích khi bạn tìm kiếm các vấn đề trong ứng dụng, nhưng nó cũng tiết lộ các thông tin 
+về cấu trúc của ứng dụng ra ngoài. Để bảo vệ hiệu quả ứng dụng bạn cần phải cài đặt server khác với khi phát triển 
+ứng dụng.
 
-To show every possible error during **development**, configure the following settings in your `php.ini`:
+### Khi phát triển ứng dụng (Development)
+
+Hiển thị lỗi **Khi phát triển ứng dụng**, cài đặt trong file `php.ini`:
 
 {% highlight ini %}
 display_errors = On
@@ -21,23 +22,23 @@ error_reporting = -1
 log_errors = On
 {% endhighlight %}
 
-> Passing in the value `-1` will show every possible error, even when new levels and constants are added in future PHP
-> versions. The `E_ALL` constant also behaves this way as of PHP 5.4. -
+> Truyền giá trị `-1` để hiện tất cả các lỗi.
+> Hằng `E_ALL` cũng tương tự trong PHP 5.4
 > [php.net](http://php.net/function.error-reporting)
 
-The `E_STRICT` error level constant was introduced in 5.3.0 and is not part of `E_ALL`, however it became part of
-`E_ALL` in 5.4.0. What does this mean? In terms of reporting every possible error in version 5.3 it means you must
-use either `-1` or `E_ALL | E_STRICT`.
+Hằng `E_STRICT` trong PHP 5.3.0 không là một phần của `E_ALL`, 
+tuy nhiên trong PHP 5.4.0 nó là một phần của `E_ALL`. Có nghĩa là nếu bạn muốn hiển thị tất cả các lỗi 
+trong PHP 5.3 phải dùng `-1` hoặc `E_ALL | E_STRICT`.
 
-**Reporting every possible error by PHP version**
+**Hiển thị tất cả các lỗi theo phiên bản PHP**
 
 * &lt; 5.3 `-1` or `E_ALL`
 * &nbsp; 5.3 `-1` or `E_ALL | E_STRICT`
 * &gt; 5.3 `-1` or `E_ALL`
 
-### Production
+### Khi sản phẩm chạy thực tế (Production)
 
-To hide errors on your **production** environment, configure your `php.ini` as:
+Để ẩn lỗi **khi sản phẩm chạy thực tế**, thiết đặt `php.ini` như sau:
 
 {% highlight ini %}
 display_errors = Off
@@ -46,8 +47,8 @@ error_reporting = E_ALL
 log_errors = On
 {% endhighlight %}
 
-With these settings in production, errors will still be logged to the error logs for the web server, but will not be
-shown to the user. For more information on these settings, see the PHP manual:
+Với thiết đặt như vậy, ứng dụng sẽ không thông báo lỗi ra bên ngoài nhưng sẽ ghi vào file log trên server. 
+Tìm hiểu thêm thông tin:
 
 * [error_reporting](http://php.net/errorfunc.configuration#ini.error-reporting)
 * [display_errors](http://php.net/errorfunc.configuration#ini.display-errors)

@@ -1,21 +1,44 @@
 ---
+title: Lợi ích
 isChild: true
 anchor:  templating_benefits
 ---
 
-## Benefits {#templating_benefits_title}
+## Lợi ích {#templating_benefits_title}
 
-The main benefit to using templates is the clear separation they create between the presentation logic and the rest of
-your application. Templates have the sole responsibility of displaying formatted content. They are not responsible for
-data lookup, persistence or other more complex tasks. This leads to cleaner, more readable code which is especially
-helpful in a team environment where developers work on the server-side code (controllers, models) and designers work on
-the client-side code (markup).
+Lợi ích chính khi dùng template là sự tách bạch của code và phần còn lại của ứng dụng.
+Template có chức năng hiển thị các nội dung được định dạng, không có chức năng tìm kiếm thông tin hay các chức 
+năng phức tạp khác. Code của bạn sẽ sạch hơn, dễ đọc hơn, hữu ích cho môi trường là việc nhóm, nơi mà 
+các lập trình viên làm việc với code ở server (controllers, models) và người thiết kế làm việc ở client-side.
 
-Templates also improve the organization of presentation code. Templates are typically placed in a "views" folder, each
-defined within a single file. This approach encourages code reuse where larger blocks of code are broken into smaller,
-reusable pieces, often called partials. For example, your site header and footer can each be defined as templates,
-which are then included before and after each page template.
+Template cũng cung cấp sự tổ chức cho code giao diện, được đặt trong thư mục views, trong mỗi file riêng biệt. 
+Phương thức tiếp cận này giúp tài sử dụng code khi mà một đoạn code lớn được chia thành nhiều đoạn nhỏ, 
+các phần có thề tái sử dụng, thường dược gọi là các partial. Ví dụ, header và footer của trang web có 
+thể khai báo như là template, và được kéo vào ở đầu và cuối mỗi file tempalte.
 
-Finally, depending on the library you use, templates can offer more security by automatically escaping user-generated
-content. Some libraries even offer sand-boxing, where template designers are only given access to white-listed
-variables and functions.
+Cuối cùng, tùy thuộc vào thư viện mà bạn dùng, template có thể hỗ trợ thêm bảo mật bằng cách tự động 
+escape các nội dung do người dùng tạo ra. Một vài thư viện cung cấp sand-box, nơi mà các template designer 
+chỉ được truy cập tới các biến và hàm nằm trong white-list.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

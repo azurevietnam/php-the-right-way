@@ -4,5 +4,5 @@ anchor: caching
 
 # Caching {#caching_title}
 
-PHP is pretty quick by itself, but bottlenecks can arise when you make remote connections, load files, etc. 
-Thankfully, there are various tools available to speed up certain parts of your application, or reduce the number of times these various time-consuming tasks need to run.
+PHP chạy khá nhanh, nhưng hiện tượng thắt cổ chai có thể xuất hiện khi tạo các kết nối remote, tải file, ... 
+May mắn là có nhiều công cụ để tăng tốc từng phần cụ thể của ứng dụng, hoặc giảm thời gian của các tác vụ này.

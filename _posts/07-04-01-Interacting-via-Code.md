@@ -1,13 +1,12 @@
 ---
 isChild: true
-title:   Interacting with Databases
+title:   Tương tác với Databases
 anchor:  databases_interacting
 ---
 
-## Interacting with Databases {#databases_interacting_title}
+## Tương tác với Databases {#databases_interacting_title}
 
-When developers first start to learn PHP, they often end up mixing their database interaction up with their
-presentation logic, using code that might look like this:
+Khi các lập trình viên mới học PHP, họ thường kết hợp các tương tác với database với code giao điện như sau:
 
 {% highlight php %}
 <ul>
@@ -19,13 +18,12 @@ foreach ($db->query('SELECT * FROM table') as $row) {
 </ul>
 {% endhighlight %}
 
-This is bad practice for all sorts of reasons, mainly that its hard to debug, hard to test, hard to read and it is
-going to output a lot of fields if you don't put a limit on there.
+Cách viết code như vậy rất khó debug, khó test, khó đọc read nó sẽ xuất ra rất nhiều field nếu bạn không giới hạn.
 
-While there are many other solutions to doing this - depending on if you prefer [OOP](/#object-oriented-programming) or
-[functional programming](/#functional-programming) - there must be some element of separation.
+Có vài giải pháp cho vấn đề này - tùy thuộc bạn thích [OOP](./#object-oriented-programming) hay
+[functional programming](./#functional-programming) hơn.
 
-Consider the most basic step:
+Theo một số bước cơ bản sau:
 
 {% highlight php %}
 <?php
@@ -38,11 +36,10 @@ foreach (getAllFoos($db) as $row) {
 }
 {% endhighlight %}
 
-That is a good start. Put those two items in two different files and you've got some clean separation.
+Đặt hai đoạn trên vào hai file khác nhau, code của bạn sẽ trông gọn gàng và tách biệt hơn.
 
-Create a class to place that method in and you have a "Model". Create a simple `.php` file to put the presentation
-logic in and you have a "View", which is very nearly [MVC] - a common OOP architecture for most
-[frameworks](/#frameworks).
+Tạo một class và đặt phương thức trên vào, và bạn có một "Model". Tạo một file `.php` đơn giản để đặt phần code giao diện 
+và bạn có một "View" gần giống với mô hình [MVC] - một mô hình phổ biến cho hầu hết các [frameworks](/#frameworks).
 
 **foo.php**
 
@@ -90,12 +87,11 @@ class FooModel
 <?php endforeach ?>
 {% endhighlight %}
 
-This is essentially the same as what most modern frameworks are doing, albeit a little more manual. You might not
-need to do all of that every time, but mixing together too much presentation logic and database interaction can be a
-real problem if you ever want to [unit-test](/#unit-testing) your application.
+Điều này rất giống với frameworks hiện đại, mặc dù có chút thủ công. Làm như vậy sẽ giúp bạn 
+tránh được một số rắc rối khi [unit-test](./#unit-testing) ứng dụng.
 
-[PHPBridge] has a great resource called [Creating a Data Class] which covers a very similar topic, and is great for
-developers just getting used to the concept of interacting with databases.
+[PHPBridge] có môt bài rất hay về [tạo class Data] rất tốt cho các lập trình viên mới quen với khái niệm 
+tương tác với database.
 
 
 [MVC]: http://code.tutsplus.com/tutorials/mvc-for-noobs--net-10488

@@ -6,9 +6,9 @@ anchor:  pdo_extension
 
 ## PDO Extension {#pdo_extension_title}
 
-[PDO] is a database connection abstraction library &mdash; built into PHP since 5.1.0 &mdash; that provides a common
-interface to talk with many different databases. For example, you can use basically identical code to interface with
-MySQL or SQLite:
+[PDO] là một thư viện database connection abstraction; có sẵn trong PHP 5.1.0 
+&mdash; cung cấp các interface thông dụng để làm việc với nhiều loại database khác nhau. 
+Ví dụ, bạn có thể dùng một hàm duy nhất để tương tác với MySQL hay SQLite:
 
 {% highlight php %}
 <?php
@@ -25,15 +25,14 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
 echo htmlentities($row['some_field']);
 {% endhighlight %}
 
-PDO will not translate your SQL queries or emulate missing features; it is purely for connecting to multiple types of
-database with the same API.
+PDO sẽ không dịch SQL query; Nó chỉ đơn giản kết nối với nhiều loại database 
+với cùng một API.
 
-More importantly, `PDO` allows you to safely inject foreign input (e.g. IDs) into your SQL queries without worrying
-about database SQL injection attacks.
-This is possible using PDO statements and bound parameters.
+Quan trọng hơn, `PDO` cho phép bạn nhập các input bên ngoài một cách an toàn 
+vào SQL queries mà không phải lo lắng bị tấn công SQL injection.
 
-Let's assume a PHP script receives a numeric ID as a query parameter. This ID should be used to fetch a user record
-from a database. This is the `wrong` way to do this:
+Giả sử PHP nhận một biến số ID như là tham số của query. ID nên được dùng để tìm thông tin của user 
+từ database. Cách làm sau đây là cách không đúng:
 
 {% highlight php %}
 <?php
@@ -41,35 +40,34 @@ $pdo = new PDO('sqlite:/path/db/users.db');
 $pdo->query("SELECT name FROM users WHERE id = " . $_GET['id']); // <-- NO!
 {% endhighlight %}
 
-This is terrible code. You are inserting a raw query parameter into a SQL query. This will get you hacked in a
-heartbeat, using a practice called [SQL Injection]. Just imagine if a hacker passes in an inventive `id` parameter by
-calling a URL like `http://domain.com/?id=1%3BDELETE+FROM+users`. This will set the `$_GET['id']` variable to `1;DELETE
-FROM users` which will delete all of your users! Instead, you should sanitize the ID input using PDO bound parameters.
+Bạn đang đưa một tham số chưa qua xử lý vào SQL query. 
+Nó sẽ khiến bạn bị tấn công [SQL Injection]. Nếu hacker truyền vào một ID không hợp lệ bằng cách gọi một URL như sau:
+`http://domain.com/?id=1%3BDELETE+FROM+users`. Lúc đó giá trị của biến `$_GET['id']` sẽ là `1;DELETE FROM users` 
+là câu lệnh sẽ xóa hết tất cả user! Vì vậy, xử lý qua ID bằng chức năng bind parameter của PDO.
 
 {% highlight php %}
 <?php
 $pdo = new PDO('sqlite:/path/db/users.db');
 $stmt = $pdo->prepare('SELECT name FROM users WHERE id = :id');
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT); // <-- filter your data first (see [Data Filtering](#data_filtering)), especially important for INSERT, UPDATE, etc.
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT); // <-- filter your 
+data first (see [Data Filtering](#data_filtering)), especially important for INSERT, UPDATE, etc.
 $stmt->bindParam(':id', $id, PDO::PARAM_INT); // <-- Automatically sanitized for SQL by PDO
 $stmt->execute();
 {% endhighlight %}
 
-This is correct code. It uses a bound parameter on a PDO statement. This escapes the foreign input ID before it is
-introduced to the database preventing potential SQL injection attacks.
+Đây là đoạn code đúng. Nó dùng bind parameter trong câu lệnh PDO. Nó sẽ escape ID trước khi nhập vào database.
 
-For writes, such as INSERT or UPDATE, it's especially critical to still [filter your data](#data_filtering) first and sanitize it for other things (removal of HTML tags, JavaScript, etc).  PDO will only sanitize it for SQL, not for your application.
+Để INSERT hay UPDATE database, cần đặt biệt chú ý 
+[lọc dữ liệu của bạn](#data_filtering) trước khi làm việc với database  
+(gỡ các thẻ HTML, JavaScript, ...).  PDO chỉ xử lý data cho SQL, không phải cho ứng dụng của bạn.
 
-* [Learn about PDO]
+* [Tìm hiểu về PDO]
 
-You should also be aware that database connections use up resources and it was not unheard-of to have resources
-exhausted if connections were not implicitly closed, however this was more common in other languages. Using PDO you can
-implicitly close the connection by destroying the object by ensuring all remaining references to it are deleted, i.e.
-set to NULL. If you don't do this explicitly, PHP will automatically close the connection when your script ends -
-unless of course you are using persistent connections.
+Sử dụng PDO bạn có thể đóng các kết nối bằng cách hủy bỏ các đối tượng. Hoặc PHP sẽ tự động đóng kết nối nếu 
+khi đoạn mã kết thúc.
 
-* [Learn about PDO connections]
 
+* [Tìm hiểu về PDO connections]
 
 [pdo]: http://php.net/pdo
 [SQL Injection]: http://wiki.hashphp.org/Validation

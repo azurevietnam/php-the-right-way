@@ -1,26 +1,23 @@
 ---
 layout: page
-title:  Functional Programming in PHP
+title:  Lập trình chức năng trong PHP
 sitemap: true
 ---
 
-# Functional Programming in PHP
+# Lập trình chức năng trong PHP
 
-PHP supports first-class functions, meaning that a function can be assigned to a variable. Both user-defined and
-built-in functions can be referenced by a variable and invoked dynamically. Functions can be passed as arguments to
-other functions and a function can return other functions (a feature called higher-order functions).
+PHP hỗ trợ first-class functions, có nghĩa là bạn có thể gán hàm vào biến (các hàm có sẵn và các hàm được xây dựng). 
+Hàm có thể được truyền như tham số cho hàm khác và hàm có thể trả về hàm khác (higher-order functions).
 
-Recursion, a feature that allows a function to call itself, is supported by the language, but most of the PHP code
-focus is on iteration.
+Đệ qui được PHP hỗ trợ nhưng đa số code PHP tập trung vào sự lặp lại.
 
-Anonymous functions (with support for closures) have been present since PHP 5.3 (2009).
+Hàm vô danh (with support for closures) được hỗ trợ trong phiên bản PHP 5.3 (2009).
 
-PHP 5.4 added the ability to bind closures to an object's scope and also improved support for callables such that they
-can be used interchangeably with anonymous functions in almost all cases.
+PHP 5.4 đã thêm chức năng bắt buộc closure nằm trong phạm vi object và cũng cải thiện hỗ trợ cho
+ callables như nó có thể dùng để thay thế anonymous functions trong hầu hết các tình huống.
 
-The most common usage of higher-order functions is when implementing a strategy pattern. The built-in `array_filter()`
-function asks both for the input array (data) and a function (a strategy or a callback) used as a filter function on
-each array item.
+Công dụng phổ biến nhất của higher-order functions là khi thực thi strategy pattern. Hàm có sẵn `array_filter()` 
+đòi hỏi cả array input (dữ liệu) và hàm (trategy hay callback) được dùng như là hàm filter trên mỗi phần tử array.
 
 {% highlight php %}
 <?php
@@ -42,12 +39,11 @@ $output = array_filter($input, function($item) {
 print_r($output);
 {% endhighlight %}
 
-A closure is an anonymous function that can access variables imported from the outside scope without using any global
-variables. Theoretically, a closure is a function with some arguments closed (e.g. fixed) by the environment when it is
-defined. Closures can work around variable scope restrictions in a clean way.
+Closure là một hàm vô danh có thể truy cập các biến được nhập từ bên ngoài mà không cần dùng tới biến toàn cục. 
+Về mặt lý thuyết, closure là một hàm với vài tham số bị đóng bởi môi trường khi nó được khai báo. 
+Closure có thể hoạt động trong các phạm vi biến hạn chế một cách "gọn gàn".
 
-In the next example we use closures to define a function returning a single filter function for `array_filter()`, out
-of a family of filter functions.
+Trong ví dụ tiếp theo, chúng ta dùng closures để khai báo hàm trả về một hàm filter cho hàm `array_filter()`, 
 
 {% highlight php %}
 <?php
@@ -71,17 +67,14 @@ $output = array_filter($input, criteria_greater_than(3));
 print_r($output); // items > 3
 {% endhighlight %}
 
-Each filter function in the family accepts only elements greater than some minimum value. Single filter returned by
-`criteria_greater_than` is a closure with `$min` argument closed by the value in the scope (given as an argument when
-`criteria_greater_than` is called).
+Mỗi hàm filter trong hệ thống chỉ chấp nhận các phần tử lớn hơn giá trị tối thiểu. 
+Hàm filter trả về bởi 
+`criteria_greater_than` là một closure với tham số `$min` bị đóng bởi giá trị trong phạm vi. 
+(đưa ra một tham số khi `criteria_greater_than` được gọi).
 
-Early binding is used by default for importing `$min` variable into the created function. For true closures with late
-binding one should use a reference when importing. Imagine a templating or input validation library, where closure is
-defined to capture variables in scope and access them later when the anonymous function is evaluated.
-
-* [Read about Anonymous functions][anonymous-functions]
-* [More details in the Closures RFC][closures-rfc]
-* [Read about dynamically invoking functions with `call_user_func_array()`][call-user-func-array]
+* [Đọc thêm về hàm vô danh][anonymous-functions]
+* [Đọc thêm về Closures RFC][closures-rfc]
+* [Gọi hàm với `call_user_func_array()`][call-user-func-array]
 
 
 [anonymous-functions]: http://php.net/functions.anonymous

@@ -5,64 +5,73 @@ anchor:  test_driven_development
 
 ## Test Driven Development {#test_driven_development_title}
 
-From [Wikipedia](http://en.wikipedia.org/wiki/Test-driven_development):
+[Wikipedia](http://en.wikipedia.org/wiki/Test-driven_development):
 
-> Test-driven development (TDD) is a software development process that relies on the repetition of a very short
-> development cycle: first the developer writes a failing automated test case that defines a desired improvement or new
-> function, then produces code to pass that test and finally refactors the new code to acceptable standards. Kent Beck,
-> who is credited with having developed or 'rediscovered' the technique, stated in 2003 that TDD encourages simple
-> designs and inspires confidence.
+TDD (Test Driven Development) là một phương thức làm việc, hay một quy trình viết mã hiện đại. 
+Lập trình viên sẽ thực hiện thông qua các bước nhỏ (BabyStep) và tiến độ được đảm bảo liên tục 
+bằng cách viết và chạy các bài test tự động (automated tests). Quá trình lập trình trong TDD 
+cực kỳ chú trọng vào các bước liên tục sau:
+> Viết 1 test cho hàm mới. Đảm bảo rằng test sẽ fail.
+> Chuyển qua viết code sơ khai nhất cho hàm đó để test có thể pass.
+> Tối ưu hóa đoạn code của hàm vừa viết sao cho đảm bảo test vẫn pass và tối ưu nhất cho việc lập trình 
+kế tiếp.
+> Lặp lại cho các hàm khác từ bước 1.
 
-There are several different types of testing that you can do for your application:
+Một số loại testing:
 
 ### Unit Testing
 
-Unit Testing is a programming approach to ensure functions, classes and methods are working as expected, from the point
-you build them all the way through the development cycle. By checking values going in and out of various functions and
-methods, you can make sure the internal logic is working correctly. By using Dependency Injection and building "mock"
-classes and stubs you can verify that dependencies are correctly used for even better test coverage.
 
-When you create a class or function you should create a unit test for each behavior it must have. At a very basic level
-you should make sure it errors if you send it bad arguments and make sure it works if you send it valid arguments. This
-will help ensure that when you make changes to this class or function later on in the development cycle that the old
-functionality continues to work as expected. The only alternative to this would be `var_dump()` in a test.php, which is
-no way to build an application - large or small.
+Unit test là một cách tiếp cận trong lập trình để đảm bào các hàm, class, phương thức hoạt động như mong đợi 
+trong suốt quá trình phát triển. Bằng cách kiểm tra giá trị đầu vào và giá trị đầu ra của các hàm, phương thức, 
+bạn có thể đảm bảo các logic bên trong vẫn hoạt động tốt. Bằng cách sử dụng Dependency Injection và xây dựng 
+các class "mock" và stub bạn có thể xác minh rằng các dependency được dùng đúng cách.
 
-The other use for unit tests is contributing to open source. If you can write a test that shows broken functionality
-(i.e. fails), then fix it, and show the test passing, patches are much more likely to be accepted. If you run a project
-which accepts pull requests then you should suggest this as a requirement.
+Khi bạn, tạo một class hay một hàm, bạn cũng nên tạo unit test cho mỗi chức năng của nó. Ở cấp độ cơ bản nhất 
+bạn cần đảm bảo nó phát sinh lỗi nếu bạn truyền vào tham số không mong đợi và không phát sinh lỗi nếu bạn truyền 
+vào một tham số chuẩn. Việc này sẽ chắc rằng trong tương lai nếu bạn thay đổi class hay hàm thì chức năng cũ vẫn 
+hoạt động như mong đợi.
 
-[PHPUnit](http://phpunit.de) is the de-facto testing framework for writing unit tests for PHP applications, but there
-are several alternatives
+Một công dụng khác của Unit Test là hỗ trợ việc đóng góp cho mã nguồn mở. Nếu bạn có thể viết một test cho 
+thấy một chức năng bị vỡ, sau đó sửa nó thì dễ được chấp nhận hơn. Nếu project của bạn cho phép pull request 
+thì bạn nên đề nghị việc viết test như là một yêu cầu.
+
+[PHPUnit](http://phpunit.de) là một testing framework để viết unit tests cho ứng dụng PHP, có một số lựa chọn khác như: 
 
 * [atoum](https://github.com/atoum/atoum)
 * [Kahlan](https://github.com/crysalead/kahlan)
 * [Peridot](http://peridot-php.github.io/)
 * [SimpleTest](http://simpletest.org)
 
-### Integration Testing
+### Test tích hợp (Integration Testing)
 
-From [Wikipedia](http://en.wikipedia.org/wiki/Integration_testing):
+[Wikipedia](http://en.wikipedia.org/wiki/Integration_testing):
 
-> Integration testing (sometimes called Integration and Testing, abbreviated "I&T") is the phase in software testing in
-> which individual software modules are combined and tested as a group. It occurs after unit testing and before
-> validation testing. Integration testing takes as its input modules that have been unit tested, groups them in larger
-> aggregates, applies tests defined in an integration test plan to those aggregates, and delivers as its output the
-> integrated system ready for system testing.
+> Integration testing (hay Integration and Testing, viết tắt là "I&T") là một giai đoạn của testing
+> mà mỗi module của ứng dụng được kết hợp và test như một nhóm. Nó diễn ra sau Unit test và trước 
+> validation testing. Integration testing lấy giá trị đầu vào của module đã được Unit test, nhóm chúng trong các 
+> test lớn hơn, được khai báo trong một integration test plan to those aggregates, và trả về out put
+> sẵn sàng cho testing.
 
-Many of the same tools that can be used for unit testing can be used for integration testing as many of the same
-principles are used.
+Hay đơn giản: 
+ Là kiểu test kiểm tra liệu tất cả các module đã được kết hợp hoặc chưa kết hợp lại cùng với nhau 
+ thực hiện công việc có đạt được kết quả như yêu cầu đã được xác định (do mỗi lập trình 
+ viên thực hiện trên các module khác nhau. Khi họ hoàn thành đoạn code của họ, nhóm quản lý cấu 
+ hình ráp chúng lại với nhau và chuẩn bị biên dịch. Các tester cần chắc rằng các module này bây giờ 
+ đã được kết hợp và làm việc theo như yêu cầu - tức là phải test theo như yêu cầu).
 
-### Functional Testing
+Nhiều công cụ dùng cho unit test có thể được dùng cho integration testing.
 
-Sometimes also known as acceptance testing, functional testing consists of using tools to create automated tests that
-actually use your application instead of just verifying that individual units of code are behaving correctly and that
-individual units can speak to each other correctly. These tools typically work using real data and simulating actual
-users of the application.
+### (Test chức năng) Functional Testing
 
-#### Functional Testing Tools
+Đôi khi được gọi là (acceptance testing), bao gồm sử dụng công cụ để tạo các test tự động thực chất là sử dụng ứng dung thay vì 
+chỉ xác minh từng unit có hoạt động tốt không và mội unit có thể giao tiếp với nhau một các chính xác. 
+Các công cụ này sử dụng các dữ liệu thực và mô phỏng người dùng thật của ứng dụng.
+
+#### Công cụ test chức năng
 
 * [Selenium](http://seleniumhq.com)
 * [Mink](http://mink.behat.org)
-* [Codeception](http://codeception.com) is a full-stack testing framework that includes acceptance testing tools
-* [Storyplayer](http://datasift.github.io/storyplayer) is a full-stack testing framework that includes support for creating and destroying test environments on demand
+* [Codeception](http://codeception.com) is a full-stack testing framework.
+* [Storyplayer](http://datasift.github.io/storyplayer) is a full-stack testing framework that 
+includes support for creating and destroying test environments on demand.

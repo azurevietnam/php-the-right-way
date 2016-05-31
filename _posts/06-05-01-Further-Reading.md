@@ -1,11 +1,12 @@
 ---
+title: Tham khảo
 isChild: true
 anchor:  further_reading
 ---
 
-## Further Reading {#further_reading_title}
+## Tham khảo {#further_reading_title} 
 
-* [Learning about Dependency Injection and PHP](http://ralphschindler.com/2011/05/18/learning-about-dependency-injection-and-php)
+* [Xem thêm về Dependency Injection và PHP](http://ralphschindler.com/2011/05/18/learning-about-dependency-injection-and-php)
 * [What is Dependency Injection?](http://fabien.potencier.org/article/11/what-is-dependency-injection)
 * [Dependency Injection: An analogy](https://mwop.net/blog/260-Dependency-Injection-An-analogy.html)
 * [Dependency Injection: Huh?](http://net.tutsplus.com/tutorials/php/dependency-injection-huh/)

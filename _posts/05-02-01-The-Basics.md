@@ -1,13 +1,13 @@
 ---
+title: Cơ bản
 isChild: true
 anchor:  the_basics
 ---
 
-## The Basics {#the_basics_title}
+## Cơ bản {#the_basics_title}
 
-PHP is a vast language that allows coders of all levels the ability to produce code not only quickly, but efficiently.
-However while advancing through the language, we often forget the basics that we first learnt (or overlooked) in favor
-of short cuts and/or bad habits. To help combat this common issue, this section is aimed at reminding coders of the
-basic coding practices within PHP.
+PHP là một ngôn ngữ rộng lớn cho phép các lập trình viên dù ở cấp độ nào cũng có thể viết code một cách nhanh chóng và hiệu quả. 
+Tuy nhiên trong quá trình học nâng cao PHP, chúng ta thường quên các phần cơ bản. Phần này nhằm mục đích 
+giúp ôn lại các phần cơ bản.
 
-* Continue reading on [The Basics](/pages/The-Basics.html)
+* Tiếp tục [Phần cơ bản](./pages/The-Basics.html)

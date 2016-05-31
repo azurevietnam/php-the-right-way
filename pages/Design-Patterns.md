@@ -6,8 +6,8 @@ sitemap: true
 
 # Design Patterns
 
-There are numerous ways to structure the code and project for your web application, and you can put as much or as little thought as you like into architecting. But it is usually a good idea to follow common patterns because it will
-make your code easier to manage and easier for others to understand.
+Có nhiều các để cấu trúc code và project cho ứng dụng web. Nhưng cách tốt là tuân theo các pattern thông 
+dụng vì nó là cho code dễ quản lý và dễ hiểu hơn.
 
 * [Architectural pattern on Wikipedia](https://en.wikipedia.org/wiki/Architectural_pattern)
 * [Software design pattern on Wikipedia](https://en.wikipedia.org/wiki/Software_design_pattern)
@@ -15,8 +15,8 @@ make your code easier to manage and easier for others to understand.
 
 ## Factory
 
-One of the most commonly used design patterns is the factory pattern. In this pattern, a class simply creates the
-object you want to use. Consider the following example of the factory pattern:
+Mộ trong các Design patterns phổ biến nhất là factory pattern. Trong pattern này, 
+một class dùng để tạo một đối tượng mà bạn muốn dùng. ví dụ:
 
 {% highlight php %}
 <?php
@@ -51,22 +51,21 @@ $veyron = AutomobileFactory::create('Bugatti', 'Veyron');
 print_r($veyron->getMakeAndModel()); // outputs "Bugatti Veyron"
 {% endhighlight %}
 
-This code uses a factory to create the Automobile object. There are two possible benefits to building your code this
-way; the first is that if you need to change, rename, or replace the Automobile class later on you can do so and you
-will only have to modify the code in the factory, instead of every place in your project that uses the Automobile class.
-The second possible benefit is that if creating the object is a complicated job you can do all of the work in the
-factory, instead of repeating it every time you want to create a new instance.
+Đoạn code trên dùng factory pattern để tạo đối tượng Automobile. Lợi ích khi sử dụng cách này là: 
+- Bạn có thể thay đổi, rename hay thay thế class Automobile sau này và bạn chỉ cần chỉn sửa code trong factory,
+thay vì tất cả mọi nơi trong class sử dụng class Automobile.
+- Nếu tạo đối tượng là một việc phức tạp, bạn có thể làm việc đó trong factory, thay vì lặp lại nó mỗi khi tạo một đối tượng mới.
 
-Using the factory pattern isn't always necessary (or wise). The example code used here is so simple that a factory
-would simply be adding unneeded complexity. However if you are making a fairly large or complex project you may save
-yourself a lot of trouble down the road by using factories.
+Sử dụng factory không phải lúc nào cũng cần thiết và thông minh. Đoạn code ví dụ ở đây rất đơn giản, factory 
+chỉ tạo thêm sự phức tạp không cần thiết. Tuy nhiên nếu bạn xây dựng một dự án lớn hay phức tạp, dùng factory có thể 
+tránh khỏi nhiều rắc rối.
 
 * [Factory pattern on Wikipedia](https://en.wikipedia.org/wiki/Factory_pattern)
 
 ## Singleton
 
-When designing web applications, it often makes sense conceptually and architecturally to allow access to one and only
-one instance of a particular class. The singleton pattern enables us to do this.
+Khi thiết kế một ứng dụng web, Thường bạn chỉ muốn cho phép truy cập tới một và chỉ một đối tượng của class cụ thể. 
+Singleton pattern sẽ giúp bạn làm điều đó.
 
 {% highlight php %}
 <?php
@@ -133,39 +132,43 @@ var_dump($anotherObj === Singleton::getInstance());      // bool(false)
 var_dump($anotherObj === SingletonChild::getInstance()); // bool(true)
 {% endhighlight %}
 
-The code above implements the singleton pattern using a [*static* variable](http://php.net/language.variables.scope#language.variables.scope.static) and the static creation method `getInstance()`.
+Đọan code trên thực thi singleton pattern sử dụng [biến *static*](http://php.net/language.variables.scope#language.variables.scope.static) và  
+phương thức static `getInstance()`.
 Note the following:
 
-* The constructor [`__construct()`](http://php.net/language.oop5.decon#object.construct) is declared as protected to
-prevent creating a new instance outside of the class via the `new` operator.
-* The magic method [`__clone()`](http://php.net/language.oop5.cloning#object.clone) is declared as private to prevent
-cloning of an instance of the class via the [`clone`](http://php.net/language.oop5.cloning) operator.
-* The magic method [`__wakeup()`](http://php.net/language.oop5.magic#object.wakeup) is declared as private to prevent
-unserializing of an instance of the class via the global function [`unserialize()`](http://php.net/function.unserialize)
+* Hàm constructor [`__construct()`](http://php.net/language.oop5.decon#object.construct) được khai báo protected 
+để ngăn chặn tạo đối tượng mới bên ngoài class bằng toán tử `new`.
+* Phương thức magic [`__clone()`](http://php.net/language.oop5.cloning#object.clone) được khai báo  
+ private để ngăn chặn sao chép đối tượng của class bằng toán tử [`clone`](http://php.net/language.oop5.cloning). 
+* Phương thức magic [`__wakeup()`](http://php.net/language.oop5.magic#object.wakeup) 
+được khai báo private để ngăn không cho unserializing đối tượng của class từ hàm global [`unserialize()`](http://php.net/function.unserialize)
 .
-* A new instance is created via [late static binding](http://php.net/language.oop5.late-static-bindings) in the static
-creation method `getInstance()` with the keyword `static`. This allows the subclassing of the class `Singleton` in the
-example.
+* Một đối tượng mới sẽ được tạo từ một [liên kết static trễ](http://php.net/language.oop5.late-static-bindings) 
+trong phương thức static `getInstance()` với từ khóa `static`, cho phép sự phân lớp của class `Singleton` trong ví dụ.
 
-The singleton pattern is useful when we need to make sure we only have a single instance of a class for the entire
-request lifecycle in a web application. This typically occurs when we have global objects (such as a Configuration
-class) or a shared resource (such as an event queue).
+Singleton pattern hữu ích khi chỉ một đối tượng được tạo từ một class trong toàn thời gian của một request 
+trong một ứng dụng web. Đặc trưng là khi bạn có các đối tượng toàn cục (như class Config) hay các tài nguyên được chia sẻ. 
 
-You should be wary when using the singleton pattern, as by its very nature it introduces global state into your
-application, reducing testability. In most cases, dependency injection can (and should) be used in place of a singleton
-class. Using dependency injection means that we do not introduce unnecessary coupling into the design of our
-application, as the object using the shared or global resource requires no knowledge of a concretely defined class.
-
+Bạn nên cẩn thận khi dùng Singleton bởi vì nó nó làm giảm khả năng test. Trong nhiều trường hợp dependency injection có thể (và nên) được dùng taại vị trí của class singleton. 
+Sử dụng dependency injection có nghĩa bạn không giới thiệu coupling không cần thiết vào thiết kế của ứng dụng, bởi vì đối 
+tượng sử dụng các tài nguyên toàn cục hay tài nguyên được chia sẻ không cần sự hiểu biết của class được khai báo cụ thể.
+                                                                                                
 * [Singleton pattern on Wikipedia](https://en.wikipedia.org/wiki/Singleton_pattern)
 
 ## Strategy
 
-With the strategy pattern you encapsulate specific families of algorithms allowing the client class responsible for
-instantiating a particular algorithm to have no knowledge of the actual implementation. There are several variations on
-the strategy pattern, the simplest of which is outlined below:
+Đây là pattern cho phép các giải thuật khác nhau có thể được lựa chọn trong thời-gian-chạy (run-time). 
+Hay nói cách khác, Strategy định nghĩa một họ các giải thuật khác nhau, mỗi giải thuật được triển khai bởi một lớp 
+(class) cụ thể và chúng có thể hoán đổi cho nhau tùy vào ngữ cảnh. Strategy giúp các giải thuật khác nhau 
+độc lập với client sử dụng nó. Ví dụ, một lớp thực hiện nhiệm vụ so sánh dữ liệu đầu vào có thể sử dụng mẫu 
+thiết kế Strategy để tự động lựa chọn giải thuật cho việc này dựa trên loại dữ liệu, nguồn gốc của chúng, 
+lựa chọn của người dùng hay các yếu tố khác. Những yếu tố này không được biết cho tới thời-gian-chạy (runtime) 
+và khi đó tùy vào loại dữ liệu mà hệ thống lựa chọn cách thức so sánh khác nhau. Các giải pháp so sánh được đóng 
+gói trong các đối tượng riêng biệt sẽ được sử dụng bởi những đối tượng thực hiện việc này tại các phân vùng khác nhau 
+của hệ thống (hoặc thậm chí ở những hệ thống khác nhau) mà không gây ra sự trùng lặp về mã lệnh.
+Có một vài dạng của strategy pattern, đơn giản nhất là ví dụ sau:
 
-This first code snippet outlines a family of algorithms; you may want a serialized array, some JSON or maybe just an
-array of data:
+Đoạn code đẩu tiên thuộc về các giải thuật; bạn có thể muốn serialized mảng, dùng JSON hoặc chỉ cần một mảng dữ liệu:
 
 {% highlight php %}
 <?php
@@ -200,15 +203,15 @@ class ArrayOutput implements OutputInterface
 }
 {% endhighlight %}
 
-By encapsulating the above algorithms you are making it nice and clear in your code that other developers can easily
-add new output types without affecting the client code.
+Bằng cách tóm lược các thuật toán ở trên, các lập trình viên khác có thể dễ dàng thêm một kiểu output mới mà không ảnh hướng tới client code.
 
-You will see how each concrete 'output' class implements an OutputInterface - this serves two purposes, primarily it
-provides a simple contract which must be obeyed by any new concrete implementations. Secondly by implementing a common
-interface you will see in the next section that you can now utilise [Type Hinting](http://php.net/language.oop5.typehinting) to ensure that the client which is utilising these behaviours is of the correct type in
-this case 'OutputInterface'.
+Bạn có thể thấy mỗi 'output' class cụ thể thự thi OutputInterface - nhằm hai mục đích, mục dích chính là cung cấp một 
+giao ước đư giản cái nào sẽ được tuân bởi bất kỳ sự thực thi cụ thể mới nào. 
+Thứ hai,  bằng cách thực thi interface chung, bạn sẽ thấy trong phần tiếp theo rằng, bạn có thể dùng [Type Hinting](http://php.net/language.oop5.typehinting) 
+để chắc rằng các client sử dụng những hành xử này dùng đúng kiểu trong trường hợp 'OutputInterface'.
 
-The next snippet of code outlines how a calling client class might use one of these algorithms and even better set the
+The next snippet of code outlines how a calling client class might use one of 
+these algorithms and even better set the
 behaviour required at runtime:
 
 {% highlight php %}
@@ -229,8 +232,10 @@ class SomeClient
 }
 {% endhighlight %}
 
-The calling client class above has a private property which must be set at runtime and be of type 'OutputInterface'
-once this property is set a call to loadOutput() will call the load() method in the concrete class of the output type
+The calling client class above has a private property which must be set at runtime and 
+be of type 'OutputInterface'
+once this property is set a call to loadOutput() will call the load() method in the 
+concrete class of the output type
 that has been set.
 
 {% highlight php %}
@@ -251,24 +256,21 @@ $data = $client->loadOutput();
 
 ## Front Controller
 
-The front controller pattern is where you have a single entrance point for your web application (e.g. index.php) that
-handles all of the requests. This code is responsible for loading all of the dependencies, processing the request and
-sending the response to the browser. The front controller pattern can be beneficial because it encourages modular code
-and gives you a central place to hook in code that should be run for every request (such as input sanitization).
-
+Front controller pattern là nơi bạn có một lối vào cho ứng dụng web (ví dụ index.php) và 
+quản lý tất cả request. Cho phép load tất cả các dependency, thực hiện các request và gửi phản hồi tới trình duyệt. 
+Front controller pattern khuyến khích mô-đun hóa code.
 * [Front Controller pattern on Wikipedia](https://en.wikipedia.org/wiki/Front_Controller_pattern)
 
 ## Model-View-Controller
 
-The model-view-controller (MVC) pattern and its relatives HMVC and MVVM lets you break up code into logical objects
-that serve very specific purposes. Models serve as a data access layer where data is fetched and returned in formats
-usable throughout your application. Controllers handle the request, process the data returned from models and load
-views to send in the response. And views are display templates (markup, xml, etc) that are sent in the response to the
-web browser.
+Mô hình model-view-controller (MVC)và các mô hình liên quan như HMVC và MVVM cho phép bạn chia code 
+thành các đối tượng logic thực hiện các mục đích khác nhau. Model hoạt động như là lớp truy cập dữ liệu 
+, nơi dữ liệu được fetch và trả về trong định dạng có thể sử dụng trong ứng dụng. Controller quản lý các 
+request, tiến trình dữ liệ được trả về từ Model và load View. View hiển thị template (markup, xml, ...).
 
-MVC is the most common architectural pattern used in the popular [PHP frameworks](https://github.com/codeguy/php-the-right-way/wiki/Frameworks).
+MVC là pattern phổ biến nhất được dùng  trong các [PHP framework](https://github.com/codeguy/php-the-right-way/wiki/Frameworks).
 
-Learn more about MVC and its relatives:
+Tìm hiểu thêm về MVC và các mô hình liên quan:
 
 * [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93View%E2%80%93Controller)
 * [HMVC](https://en.wikipedia.org/wiki/Hierarchical_model%E2%80%93view%E2%80%93controller)

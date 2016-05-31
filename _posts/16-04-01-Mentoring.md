@@ -1,8 +1,9 @@
 ---
+title: Người hướng dẫn
 isChild: true
 anchor:  mentoring
 ---
+ 
+## Người hướng dẫn {#mentoring_title}
 
-## Mentoring {#mentoring_title}
-
-* [phpmentoring.org](http://phpmentoring.org/) - Formal, peer to peer mentoring in the PHP community.
+* [phpmentoring.org](http://phpmentoring.org/)

@@ -1,28 +1,29 @@
 ---
+title: Giao diện dòng lệnh
 isChild: true
 anchor:  command_line_interface
 ---
 
-## Command Line Interface {#command_line_interface_title}
+## Giao diện dòng lệnh (Command Line Interface) {#command_line_interface_title}
 
-PHP was created to write web applications, but is also useful for scripting command line interface (CLI) programs.
-Command line PHP programs can help automate common tasks like testing, deployment, and application administration.
+PHP được tạo để viết ứng dụng web, nhưng nó cũng rất hữu ích cho các chương trình có giao diện dòng lệnh.
+Chương trình PHP có giao diện dòng lệnh có thể tự động hóa các tác vụ thông dụng như testing, deployment, 
+và ứng dụng administration.
 
-CLI PHP programs are powerful because you can use your app's code directly without having to create and secure a web
-GUI for it. Just be sure **not** to put your CLI PHP scripts in your public web root!
+Chương trình PHP có giao diện dòng lệnh rất mạnh mẽ vì chạy ứng dụng trực tiếp không cần phải tạo và bảo mật Giao
+diện đồ họa cho nó. Nhưng **đừng** bao giờ đặt các chương trình PHP có giao diện dòng lệnh vào thư mục gốc của web!
 
-Try running PHP from your command line:
+Thử chạy php bằng giao diện dòng lệnh:
 
 {% highlight console %}
 > php -i
 {% endhighlight %}
 
-The `-i` option will print your PHP configuration just like the [`phpinfo()`][phpinfo] function.
+Tùy chọn `-i` sẽ in ra các cài đặt của PHP giống như hàm [`phpinfo()`][phpinfo].
 
-The `-a` option provides an interactive shell, similar to ruby's IRB or python's interactive shell. There are a number
-of other useful [command line options][cli-options], too.
+Tùy chọn `-a` cung cấp một interactive shell, giống với IRB của ruby hay python. Xem thêm [một lệnh phổ biến][cli-options].
 
-Let's write a simple "Hello, $name" CLI program. To try it out, create a file named `hello.php`, as below.
+Hãy viết một chương trình đơn giản như "Hello, $name". Để thử, trước tiên tạo file `hello.php` như sau:
 
 {% highlight php %}
 <?php
@@ -34,14 +35,15 @@ $name = $argv[1];
 echo "Hello, $name\n";
 {% endhighlight %}
 
-PHP sets up two special variables based on the arguments your script is run with. [`$argc`][argc] is an integer
-variable containing the argument *count* and [`$argv`][argv] is an array variable containing each argument's *value*.
-The first argument is always the name of your PHP script file, in this case `hello.php`.
 
-The `exit()` expression is used with a non-zero number to let the shell know that the command failed. Commonly used
-exit codes can be found [here][exit-codes].
+PHP cài đặt hai biến dựa vào các tham số trong đoạn mã của bạn.
+[`$argc`][argc] là biến nguyên chứa tham số **count**.
+[`$argv`][argv] là biến mảng chứa mỗi giá trị của tham số.
+Tham số đầu tiên luôn là tên của file PHP, trong trường hợp này là `hello.php`.
 
-To run our script, above, from the command line:
+`exit()` được dùng với một số khác 0 để cho shell biết câu lệnh thất bại. Xem thêm cách sử dụng `exit()` [tại đây][exit-codes].
+
+Để chạy đoạn mã trên:
 
 {% highlight console %}
 > php hello.php
@@ -51,8 +53,8 @@ Hello, world
 {% endhighlight %}
 
 
- * [Learn about running PHP from the command line][php-cli]
- * [Learn about setting up Windows to run PHP from the command line][php-cli-windows]
+ * [Xem thêm về chạy PHP trên dòng lệnh][php-cli]
+ * [Xem thêm về cài đặt Windows để chạy PHP trên dòng lệnh][php-cli-windows]
 
 
 [phpinfo]: http://php.net/function.phpinfo

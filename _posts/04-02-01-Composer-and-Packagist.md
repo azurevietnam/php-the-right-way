@@ -1,140 +1,136 @@
 ---
+title: Composer và Packagist
 isChild: true
 anchor:  composer_and_packagist
 ---
 
-## Composer and Packagist {#composer_and_packagist_title}
+## Composer và Packagist {#composer_and_packagist_title}
 
-Composer is a **brilliant** dependency manager for PHP. List your project's dependencies in a `composer.json` file and,
-with a few simple commands, Composer will automatically download your project's dependencies and setup autoloading for
-you. Composer is analogous to NPM in the node.js world, or Bundler in the Ruby world.
+Composer là dependency manager cho PHP. Liệt kê các dependencies trong project của bạn tại  
+file `composer.json` và,
+với vài lệnh đơn giản, Composer sẽ tự động tải dependencies về và cài đặt autoload cho bạn. 
+Composer tương tự như NPM của node.js, hay Bundler của Ruby.
 
-There are already a lot of PHP libraries that are compatible with Composer, ready to be used in your project. These
-"packages" are listed on [Packagist], the official repository for Composer-compatible PHP libraries.
+Có nhiều thư viện PHP tương thích với Composer, chúng được liệt kê tại [Packagist].
 
-### How to Install Composer
+### Cài đặt Composer
 
-You can install Composer locally (in your current working directory) or globally (e.g. /usr/local/bin, recommended).
-Let's assume you want to install Composer globally:
+Cài đặt trực tiếp trong thư mục làm việc của bạn (locally) hoặc cài đặt toàn cục (globally) 
+(ví dụ. /usr/local/bin, khuyến khích).
+Để cài Composer globally:
 
 {% highlight console %}
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
 {% endhighlight %}
 
-**Note:** If the above fails due to permissions, run the `mv` line again with `sudo`.
+**Chú ý:** nếu không thành công, thực thi lệnh `mv` một lần nữa với `sudo`.
 
-This will download `composer.phar` (a PHP binary archive). You can run this with `php` to manage your project
-dependencies.
+Nó sẽ download file `composer.phar` (là file PHP binary archive). Bạn có thể chạy file này với `php` 
+để quản lý các dependencies.
 
-**Please Note:** If you pipe downloaded code directly into an interpreter, please read the
-code online first to confirm it is safe.
+**Vui lòng chú ý:** nếu bạn đưa code trực tiếp vào trình phiên dịch, vui lòng đọc code online trước để đảm bào an toàn.
 
-#### Installing on Windows
+#### Cài đặt trên Windows
 
-For Windows users the easiest way to get up and running is to use the [ComposerSetup] installer, which
-performs a global install and sets up your `$PATH` so that you can just call `composer` from any
-directory in your command line.
+Các dễ nhất là tải file cài đặt [ComposerSetup], nó sẽ cài đặt globally và cài đặt biến `$PATH` 
+của bạn và  bạn có thể gọi `composer` ở mọi nới bằng command line.
 
-### How to Install Composer (manually)
+### Cài đặt Composer thủ công
 
 Manually installing Composer is an advanced technique; however, there are various reasons why a 
 developer might prefer this method vs. using the interactive installation routine. The interactive
 installation checks your PHP installation to ensure that:
 
-- a sufficient version of PHP is being used
-- `.phar` files can be executed correctly
-- certain directory permissions are sufficient
-- certain problematic extensions are not loaded
-- certain `php.ini` settings are set
+Cài đặt Composer thủ công là một kỹ thuật nân cao; tuy nhiên có nhiều lý do để một lập trình viên chọn cách này 
+thay vì cài đặt tự động vì nó sẽ kiểm tra xem:
 
-Since a manual installation performs none of these checks, you have to decide whether the trade-off is 
-worth it for you. As such, below is how to obtain Composer manually:
+- phiên bản PHP hiện tại
+- file `.phar` có được thực thi đúng cách
+- kiểm tra quyền của thư mục
+- chắc rằng các problematic extensions không được load.
+- chắc rằng các cài đặt trong file `php.ini` đã được bật.
+
+Trong khi cài đặt thủ công không thực hiện các bước kiểm tra đó, bạn phải quyết định xem sự đánh đổi đó  
+có xứng đáng không. 
+Cách cài đặt thủ công:
 
 {% highlight console %}
 curl -s https://getcomposer.org/composer.phar -o $HOME/local/bin/composer
 chmod +x $HOME/local/bin/composer
 {% endhighlight %}
 
-The path `$HOME/local/bin` (or a directory of your choice) should be in your `$PATH` environment 
-variable. This will result in a `composer` command being available.
+Đường dẫn `$HOME/local/bin` (hay thư mục khác mà bạn chọn) nên có trong biến môi trường `$PATH`.
 
-When you come across documentation that states to run Composer as `php composer.phar install`, you can
-substitute that with:
+Khi trong documentation nói cài Composer bằng lệnh `php composer.phar install`, bạn có thể thay thế bằng:
 
 {% highlight console %}
 composer install
 {% endhighlight %}
 
-This section will assume you have installed composer globally.
+Phần này giả sử bạn cài đặt composer globally.
 
-### How to Define and Install Dependencies
+### Khai báo và cài đặt Dependencies
 
-Composer keeps track of your project's dependencies in a file called `composer.json`. You can manage it
-by hand if you like, or use Composer itself. The `composer require` command adds a project dependency 
-and if you don't have a `composer.json` file, one will be created. Here's an example that adds [Twig]
-as a dependency of your project.
+Composer quản lý các dependency trong dự án của bạn trong file `composer.json`. Bạn có thể quản lý nó bằng 
+tay nếu muốn, hoặc sử dụng composer. Lệnh `composer require` để thêm dependency, nếu bạn không có file `composer.json`, 
+một file mới sẽ được tạo. Ví dụ muốn thêm dependency [Twig] vào project:
 
 {% highlight console %}
 composer require twig/twig:~1.8
 {% endhighlight %}
 
-Alternatively the `composer init` command will guide you through creating a full `composer.json` file
-for your project. Either way, once you've created your `composer.json` file you can tell Composer to
-download and install your dependencies into the `vendor/` directory. This also applies to projects 
-you've downloaded that already provide a `composer.json` file:
+Một các thay thế, lệnh `composer init` sẽ hướng dẫn bạn tạo một file `composer.json`. 
+Trong hai cách, bạn đều phải tạo file `composer.json` để thông báo cho Composer 
+tải và cài đặt các dependencies vào thư mục `vendor/`. Nó cũng áp dụng cho project 
+bạn đã download có file `composer.json` rồi:
 
 {% highlight console %}
 composer install
 {% endhighlight %}
 
-Next, add this line to your application's primary PHP file; this will tell PHP to use Composer's 
-autoloader for your project dependencies.
+Tiếp theo, thêm dòng này vào file chính của ứng dụng để nói cho PHP dùng autoloader của Composer  
+cho các dependencies của project.
 
 {% highlight php %}
 <?php
 require 'vendor/autoload.php';
 {% endhighlight %}
 
-Now you can use your project dependencies, and they'll be autoloaded on demand.
+Bây giờ bạn đã có thể sử dụng các dependencies, và chúng sẽ được load tự động khi cần.
 
-### Updating your dependencies
+### Nâng cấp các dependencies
 
-Composer creates a file called `composer.lock` which stores the exact version of each package it
-downloaded when you
-first ran `composer install`. If you share your project with other coders and the `composer.lock` file
-is part of your distribution, when they run `composer install` they'll get the same versions as you. 
-To update your dependencies, run `composer update`.
+Composer tạo file tên là `composer.lock` để chứa chính xách phiên bản của mỗi package đã download khi bạn 
+chạy lệnh `composer install`lần đầu. Nếu bạn chia sẻ project của mình với người khác và file 
+`composer.lock` cũng được chia sẻ, khi họ chạy lệnh `composer install`, họ sẽ tải về cùng phiên bản với bạn. 
+để update các dependencies, chạy lệnh `composer update`.
 
-This is most useful when you define your version requirements flexibly. For instance a version 
-requirement of `~1.8` means "anything newer than `1.8.0`, but less than `2.0.x-dev`". You can also use 
-the `*` wildcard as in `1.8.*`. Now Composer's `composer update` command will upgrade all your
-dependencies to the newest version that fits the restrictions you define.
+Sẽ hữu ích hơn nếu bạn khai báo phiên bản một cách linh hoạt. Ví dụ, `~1.8` có nghĩa "tất cả mọi thứ 
+mới hơn bản `1.8.0` nhưng cũ hơn `2.0.x-dev`". Bạn có thể dùng `*` như sau `1.8.*`. Bây giờ, `composer update` 
+sẽ nâng cấp tất cả các dependency lên phiên bản mới nhất phù hợp với khai báo của bạn.
 
-### Update Notifications
+### Thông báo Update
 
-To receive notifications about new version releases you can sign up for [VersionEye], a web service
-that can monitor your GitHub and BitBucket accounts for `composer.json` files and send emails with new
-package releases.
+Để nhận thông báo về phiên bản mới bạn có thể đăng ký [VersionEye], một dịch vụ có thể ghi lại tài khoản 
+Github hay BitBucket của bạn cho file `composer.json` và gửi email cho bạn.
 
-### Checking your dependencies for security issues
+### Kiểm tra các vấn đề bảo mật vủa các dependencies
 
-The [Security Advisories Checker] is a web service and a command-line tool, both will examine your `composer.lock`
-file and tell you if you need to update any of your dependencies.
+[Security Advisories Checker] là một web service và công cụ command-line, cả hai will kiểm tra file `composer.lock`
+và thông báo cho bạn nếu bạn cần nâng cấp bất kỳ dependency nào.
 
-### Handling global dependencies with Composer
+### Quản lý global dependencies với Composer
 
-Composer can also handle global dependencies and their binaries. Usage is straight-forward, all you need
-to do is prefix your command with `global`. If for example you wanted to install PHPUnit and have it 
-available globally, you'd run the following command:
+Tất cả bạn cần là thêm vào trước lệnh bằng `global`. 
+Ví dụ bạn muốn cài đặt PHPUnit globally:
 
 {% highlight console %}
 composer global require phpunit/phpunit
 {% endhighlight %}
 
-This will create a `~/.composer` folder where your global dependencies reside. To have the installed
-packages' binaries available everywhere, you'd then add the `~/.composer/vendor/bin` folder to your 
-`$PATH` variable.
+Nó sẽ tạo thư mục `~/.composer` nơi global dependencies thuộc về. Để có các gói cài đặt hữu dụng ở 
+mọi nơi, bạn cần thêm thư mục `~/.composer/vendor/bin` vào biến `$PATH`.
 
 * [Learn about Composer]
 

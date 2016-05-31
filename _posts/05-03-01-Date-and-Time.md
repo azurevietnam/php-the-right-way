@@ -1,17 +1,16 @@
 ---
+title: Ngày tháng và thời gian
 isChild: true
 anchor:  date_and_time
 ---
 
-## Date and Time {#date_and_time_title}
+## Ngày tháng và thời gian (Date and Time) {#date_and_time_title}
 
-PHP has a class named DateTime to help you when reading, writing, comparing or calculating with date and time. There
-are many date and time related functions in PHP besides DateTime, but it provides nice object-oriented interface to
-most common uses. It can handle time zones, but that is outside this short introduction.
+PHP cung cấp class DateTime với nhiều hàm hữu ích giúp bạn làm việc với ngày tháng và thời gian. 
 
-To start working with DateTime, convert raw date and time string to an object with `createFromFormat()` factory method
-or do `new DateTime` to get the current date and time. Use `format()` method to convert DateTime back to a string for
-output.
+Để bắt đầu làm việc với DateTime, chuyển đổi chuỗi ngày tháng và thời gian thành đối tượng với hàm factory `createFromFormat()` 
+hoặc `new DateTime` để nhận thời gian và ngày tháng hiện tại. Hàm `format()` chuyển đổi DateTime trở về 
+chuỗi cho output.
 
 {% highlight php %}
 <?php
@@ -21,10 +20,10 @@ $start = DateTime::createFromFormat('d. m. Y', $raw);
 echo 'Start date: ' . $start->format('Y-m-d') . "\n";
 {% endhighlight %}
 
-Calculating with DateTime is possible with the DateInterval class. DateTime has methods like `add()` and `sub()` that
-take a DateInterval as an argument. Do not write code that expect same number of seconds in every day, both daylight
-saving and timezone alterations will break that assumption. Use date intervals instead. To calculate date difference
-use the `diff()` method. It will return new DateInterval, which is super easy to display.
+Thực hiện tính toán với DateTime với class DateInterval. DateTime có các phương thức như `add()` và `sub()` 
+nhận DateInterval như một tham số. Đừng viết code để mong đợi có được cùng số giây cho mỗi ngày 
+Giờ mùa hè (daylight saving)(1) và sự thay đổi timezone alterations sẽ phá vỡ sự tính toán. Thay vào đó sử dụng interval thay thế. 
+Tính toán sự khác biệt ngày tháng bằng hàm `diff()`, trả về DateInterval.
 
 {% highlight php %}
 <?php
@@ -37,7 +36,7 @@ echo 'Difference: ' . $diff->format('%m month, %d days (total: %a days)') . "\n"
 // Difference: 1 month, 6 days (total: 37 days)
 {% endhighlight %}
 
-On DateTime objects you can use standard comparison:
+Đối tượng DateTime bạn có thể sử dụng so sánh chuẩn:
 
 {% highlight php %}
 <?php
@@ -46,8 +45,9 @@ if ($start < $end) {
 }
 {% endhighlight %}
 
-One last example to demonstrate the DatePeriod class. It is used to iterate over recurring events. It can take two
-DateTime objects, start and end, and the interval for which it will return all events in between.
+Một ví dụ cuối cùng để giải thích class DatePeriod. Nó được dùng để lặp lại các sự kiện tuần hoàn. 
+Nó có thể nhận hai đối tượng DateTime, bắt đầu và kết thúc, và khoảng thời gian sẽ trả về tất cả các sự kiện trong khoảng đó.
+
 
 {% highlight php %}
 <?php
@@ -60,8 +60,13 @@ foreach ($periodIterator as $date) {
 }
 {% endhighlight %}
 
-* [Read about DateTime][datetime]
-* [Read about date formatting][dateformat] (accepted date format string options)
+* [Đọc thêm về DateTime][datetime]
+* [Đọc thêm về date formatting][dateformat] (accepted date format string options)
+
+(1)Giờ mùa Hè – hay còn được biết với tên DST (Daylight Saving Time) là một kiểu quy ước chỉnh thời gian 
+theo khoảng thời gian thực tế mà trời sáng trong ngày. Với những nước áp dụng quy ước này, 
+vào thời gian từ khoảng giữa mùa Xuân (cuối tháng 3) tới đầu mùa Đông (cuối tháng 10, đầu tháng 11), 
+đồng hồ sẽ được chỉnh nhanh hơn 1 tiếng. Khoảng thời gian còn lại, đồng hồ sẽ được chỉnh về như cũ.
 
 [datetime]: http://php.net/book.datetime
 [dateformat]: http://php.net/function.date

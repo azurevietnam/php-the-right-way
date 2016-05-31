@@ -1,9 +1,10 @@
 ---
+title: Nhà cung cấp PHP PaaS
 isChild: true
 anchor:  php_paas_providers
 ---
-
-## PHP PaaS Providers {#php_paas_providers_title}
+ 
+## Nhà cung cấp PHP PaaS {#php_paas_providers_title}
 
 * [PagodaBox](https://pagodabox.com/)
 * [AppFog](https://www.ctl.io/appfog/)
@@ -19,4 +20,4 @@ anchor:  php_paas_providers
 * [Jelastic](http://jelastic.com/)
 * [Platform.sh](https://platform.sh/)
 
-To see which versions these PaaS hosts are running, head over to [PHP Versions](http://phpversions.info/paas-hosting/).
+Để xem phiên bản PHP nào PaaS host đang chạy >>> [PHP Versions](http://phpversions.info/paas-hosting/).

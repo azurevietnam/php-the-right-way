@@ -5,24 +5,25 @@ anchor:  frameworks
 
 ## Frameworks {#frameworks_title}
 
-Rather than re-invent the wheel, many PHP developers use frameworks to build out web applications. Frameworks abstract
-away many of the low-level concerns and provide helpful, easy-to-use interfaces to complete common tasks.
+Các lập trình viên thường dùng Framework để xây dựng các ứng dụng nhanh hơn.
+Framework trừu tượng hóa nhiều phần ở tần cơ bản của ứng dụng và cung cấp các interface hữu ích, dễ dùng cho các tác vụ thông dụng.
 
-You do not need to use a framework for every project. Sometimes plain PHP is the right way to go, but if you do need a
-framework then there are three main types available:
+Bạn không cần phải dùng PHP cho mỗi project. Đôi khi chỉ cần dùng PHP thuần là đủ.
+Có ba loại framework:
 
-* Micro Frameworks
+* Micro Frameworks 
 * Full-Stack Frameworks
 * Component Frameworks
 
-Micro-frameworks are essentially a wrapper to route a HTTP request to a callback, controller, method, etc as quickly as
-possible, and sometimes come with a few extra libraries to assist development such as basic database wrappers and the
-like. They are prominently used to build remote HTTP services.
+Micro Frameworks là những framework siêu nhẹ và nhanh. Micro Frameworks sử dụng luồng đi của HTTP request 
+để tạo những khái niệm căn bản trong framework như callback, controller, action, method. 
+Tiêu chí của Micro framework là càng nhanh càng tốt, vì thế việc giảm thiểu code để tối ưu hóa tốc độ và 
+hỗ trợ  khá ít các thư viện cũng như các tính năng là việc khó có thể tránh khỏi. Thường được dùng để xây dựng các remote HTTP services.
 
-Many frameworks add a considerable number of features on top of what is available in a micro-framework and these are
-known Full-Stack Frameworks. These often come bundled with ORMs, Authentication packages, etc.
+Những Micro Framework được thêm vào một số lượng lớn các tính năng, thư viện được gọi là Full-Stack 
+Framework. Những tính năng đi kèm thường với chúng thường là ORMs, Authentication,… 
 
-Component-based frameworks are collections of specialized and single-purpose libraries. Disparate component-based
-frameworks can be used together to make a micro- or full-stack framework.
+Component-based frameworks là tập hợp của các thư viện chuyên dụng. 
+Các component-based framework khác nhau có thể được dùng để tạo thành micro- hay full-stack framework.
 
-* [Popular PHP Frameworks](https://github.com/codeguy/php-the-right-way/wiki/Frameworks)
+* [Các PHP Framework phổ biến](https://github.com/codeguy/php-the-right-way/wiki/Frameworks)

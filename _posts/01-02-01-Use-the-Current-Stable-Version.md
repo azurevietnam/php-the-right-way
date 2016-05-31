@@ -1,15 +1,18 @@
 ---
-title:   Use the Current Stable Version (7.0)
+title:   Sử dụng phiên bản mới nhất (7.0)
 isChild: true
 anchor:  use_the_current_stable_version
 ---
 
-## Use the Current Stable Version (7.0) {#use_the_current_stable_version_title}
+## Sử dụng phiên bản mới nhất (7.0) {#use_the_current_stable_version_title}
 
-If you are getting started with PHP, start with the current stable release of [PHP 7.0][php-release]. PHP 7.0 is very
-new, and adds many amazing [new features](#language_highlights) over the older 5.x versions. The engine has been largely re-written, and PHP is now even quicker than older versions.
 
-Most commonly in the near future you will find PHP 5.x being used, and the latest 5.x version is 5.6. This is not a bad option, but you should try to upgrade to the latest stable quickly. Upgrading is really quite easy, as there are not many [backwards compatibility breaks][php70-bc]. If you are not sure which version a function or feature is in, you can check the PHP documentation on the [php.net][php-docs] website.
+Nếu bạn mới bắt đầu với PHP, hãy bắt đầu tìm hiểu phiên bản mới nhất [PHP 7.0][php-release], PHP 7 
+là phiên bản mới nhất, nhanh hơn và thêm [nhiều tính năng hữu ích](#language_highlights) so với các phiên bản 5.x. 
+
+Hiện tại các phiên bản PHP 5.x vẫn còn được dùng rộng rãi, nhưng tốt nhất là bạn nên update lê phiên 
+bản mới nhất. Tìm hiểu thêm tại [PHP manual][php70-bc]. Bạn có thể tìm hiểu các tính năng và các hàm trong 
+ các phiên bản, xem thêm tại [PHP Docs][php-docs]
 
 [php-release]: http://php.net/downloads.php
 [php-docs]: http://php.net/manual/

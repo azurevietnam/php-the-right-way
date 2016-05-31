@@ -1,17 +1,15 @@
 ---
+title: Các file thiết đặt
 isChild: true
 anchor:  configuration_files
 ---
 
-## Configuration Files {#configuration_files_title}
+## Các file thiết đặt (Configuration Files) {#configuration_files_title}
 
-When creating configuration files for your applications, best practices recommend that one of the following methods be
-followed:
+Khi tạo một file thiết đạt cho ứng dụng, bạn nên tuân theo các phương thức  sau:
 
-- It is recommended that you store your configuration information where it cannot be accessed directly and pulled in
-via the file system.
-- If you must store your configuration files in the document root, name the files with a `.php` extension. This ensures
-that, even if the script is accessed directly, it will not be output as plain text.
-- Information in configuration files should be protected accordingly, either through encryption or group/user file
-system permissions.
-- It is a good idea to ensure that you do not commit configuration files containing sensitive information eg passwords or API tokens to source control.
+- File thiết nên được chứa tại một nơi không thể được truy cập trực tiếp.
+- Nếu phải lưu file trong thư mục gốc của web, hãy lưu với dạng `.php` để chắc rằng các thông tin sẽ không hiện ra  
+trình duyệt với dạng text.
+- Thông tin trong file thiết dặt cần được bảo vệ bằng cách mã hóa, hay hạn chế permission.
+- Không nên commit các file thiết dặt chứa những thông tin nhạy cảm như password, API token, ...

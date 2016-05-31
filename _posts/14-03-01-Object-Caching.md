@@ -5,30 +5,27 @@ anchor:  object_caching
 
 ## Object Caching {#object_caching_title}
 
-There are times when it can be beneficial to cache individual objects in your code, such as with data that is expensive
-to get or database calls where the result is unlikely to change. You can use object caching software to hold these
-pieces of data in memory for extremely fast access later on. If you save these items to a data store after you retrieve
-them, then pull them directly from the cache for following requests, you can gain a significant improvement in
-performance as well as reduce the load on your database servers.
+Đôi khi bạn nên cache từng object trong ứng dụng, như các dữ liệu đắt đỏ, hay các truy vấn dữ liệu mà kết quả 
+không thay đổi. Bạn có thể dùng phần mềm caching object để quản lý những dữ liệu này trong bộ nhớ để tăng tốc truy 
+cập trong những lần sau.
 
-Many of the popular bytecode caching solutions let you cache custom data as well, so there's even more reason to take
-advantage of them. APCu, XCache, and WinCache all provide APIs to save data from your PHP code to their memory cache.
+Hầu hết các giải pháp bytecode caching cũng cho phép bạn lưu trữ custom data. APCu, XCache, và WinCache đều cung cấp các API 
+cho phép lưu dữ liệu từ code PHP trong bộ nhớ cache của chúng.
 
-The most commonly used memory object caching systems are APCu and memcached. APCu is an excellent choice for object
-caching, it includes a simple API for adding your own data to its memory cache and is very easy to setup and use. The
-one real limitation of APCu is that it is tied to the server it's installed on. Memcached on the other hand is
-installed as a separate service and can be accessed across the network, meaning that you can store objects in a
-hyper-fast data store in a central location and many different systems can pull from it.
+Hệ thống object caching phổ biến nhất là APCu và memcached. APCu bao gồm một AOI đơn giản để thêm dữ liệu vào bộ nhớ 
+của nó và cài đặt, sử dụng rất đơn giản. Nhưng hạn chế của APCu là nó phụ thuộc vào server được cài đặt. 
+Memcached thì được cài đặt như một ứng dụng tách biệt, có thể truy cập trên nhiều network, bạn có thể lưu trữ 
+các đối tượng vào khu vực lưu trữ dữ liệu siêu nhanh ở khu vực trung tâm và các hệ thống khác cũng có thể truy cập tới.
 
-Note that when running PHP as a (Fast-)CGI application inside your webserver, every PHP process will have its own cache,
-i.e. APCu data is not shared between your worker processes. In these cases, you might want to consider using memcached
-instead, as it's not tied to the PHP processes.
+Ghi chú rằng khi chay PHP như một ứng dụng (Fast-)CGI bên trong webserver, mỗi tiến trình PHP sẽ có cache của nó.
+Ví dụ, dữ liệu của APCu sẽ không được chia sẽ giữa các process của các worker của bạn. Trong những trường hợp 
+này, bạn có thể muốn cân nhắc dùng memcached thay thế, bởi vì nó không phụ thuộc vào các PHP process.
 
-In a networked configuration APCu will usually outperform memcached in terms of access speed, but memcached will be
-able to scale up faster and further. If you do not expect to have multiple servers running your application, or do not
-need the extra features that memcached offers then APCu is probably your best choice for object caching.
+Trong thiết đặt network của ACPu thông thường sẽ làm tốt hơn về tốc độ truy cập, nhưng memcached cho phép 
+mở rộng nhanh hơn và hơn thế nữa. Nếu bạn không muốn có nhiều server chạy ứng dụng của mình hay không cần thêm 
+nhiều tính năng memcached cung cấp thì ACPu là lựa chọn tốt nhất cho object caching.
 
-Example logic using APCu:
+Ví dụ sử dụng APCu:
 
 {% highlight php %}
 <?php
@@ -42,10 +39,14 @@ if ($data === false) {
 print_r($data);
 {% endhighlight %}
 
-Note that prior to PHP 5.5, APC provides both an object cache and a bytecode cache. APCu is a project to bring APC's
+Note that prior to PHP 5.5, APC provides both an object cache and a bytecode cache. 
+APCu is a project to bring APC's
 object cache to PHP 5.5+, since PHP now has a built-in bytecode cache (OPcache).
 
-### Learn more about popular object caching systems:
+Ghi chú: Từ PHP 5.5, ACP cung cấp cả object cache và bytecode cache. ACPu là dự án mang object cache của ACP vào 
+PHP 5.5+.
+
+### Tìm hiểu thêm về các hệ thống object caching phổ biến:
 
 * [APCu](https://github.com/krakjoe/apcu)
 * [APC Functions](http://php.net/ref.apc)

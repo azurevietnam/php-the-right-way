@@ -1,72 +1,62 @@
 ---
-title:   Working with UTF-8
+title:   Làm việc với UTF-8
 isChild: true
 anchor:  php_and_utf8
 ---
 
-## Working with UTF-8 {#php_and_utf8_title}
+## Làm việc với UTF-8 {#php_and_utf8_title}
 
-_This section was originally written by [Alex Cabal](https://alexcabal.com/) over at 
-[PHP Best Practices](https://phpbestpractices.org/#utf-8) and has been used as the basis for our own UTF-8 advice_.
+_Phần này được viết bởi [Alex Cabal](https://alexcabal.com/) tại 
+[PHP Best Practices](https://phpbestpractices.org/#utf-8)_.
 
-### There's no one-liner. Be careful, detailed, and consistent.
+### Hãy cẩn thận, tỉ mỉ, và thống nhất!
 
-Right now PHP does not support Unicode at a low level. There are ways to ensure that UTF-8 strings are processed OK,
-but it's not easy, and it requires digging in to almost all levels of the web app, from HTML to SQL to PHP. We'll aim
-for a brief, practical summary.
+Hiện tại PHP không hỗ trợ Unicode ở cấp độ thấp. Có nhiều cách để chắc rằng các chuỗi UTF-8 được thực thi, 
+nhưng rất khó khăn, và yêu cầu phải đào sâu vào từng cấp độ của ứng dụng web, từ HTML, SQL tới PHP. Chúng ta sẽ nói qua các phần thông dụng.
 
-### UTF-8 at the PHP level
+### UTF-8 tại cấp độ PHP
 
-The basic string operations, like concatenating two strings and assigning strings to variables, don't need anything
-special for UTF-8. However most string functions, like `strpos()` and `strlen()`, do need special consideration. These
-functions often have an `mb_*` counterpart: for example, `mb_strpos()` and `mb_strlen()`. These `mb_*` strings are made
-available to you via the [Multibyte String Extension], and are specifically designed to operate on Unicode strings.
 
-You must use the `mb_*` functions whenever you operate on a Unicode string. For example, if you use `substr()` on a
-UTF-8 string, there's a good chance the result will include some garbled half-characters. The correct function to use
-would be the multibyte counterpart, `mb_substr()`.
+Toán tử chuỗi cơ bản như nối chuỗi, gán chuỗi không cần quan tâm UTF-8. Nhưng đa số các hàm chuỗi như 
+`strpos()` và `strlen()` cần một sự cân nhắc cẩn thận. Các hàm này thường có hàm tương ứng với `mb_*` 
+ở phía trước như `mb_strpos()` và `mb_strlen()`, các hàm này được cung cấp tại [Multibyte String Extension], 
+và được thiết kế đặc biệt để làm việc với các chuỗi Unicode.
 
-The hard part is remembering to use the `mb_*` functions at all times. If you forget even just once, your Unicode
-string has a chance of being garbled during further processing.
+Bạn cần dùng các hàm `mb_*` bất cứa khi nào cần làm việc với chuỗi Unicode. Ví dụ như `substr()` trên chuỗi UTF-8, 
+bạn nên dùng hàm `mb_substr()` thay thế. Không phải lúc nào cũng có hàm `mb_*` tương ứng.
 
-Not all string functions have an `mb_*` counterpart. If there isn't one for what you want to do, then you might be out
-of luck.
+Bạn nên dùng hàm `mb_internal_encoding()` trên đầu mỗi file PHP và hàm `mb_http_output()` ngay sau nó 
+nếu mã PHP của bạn xuất kết quả ra trình duyệt, việc này sẽ khiến bạn khá đau đầu.
 
-You should use the `mb_internal_encoding()` function at the top of every PHP script you write (or at the top of your
-global include script), and the `mb_http_output()` function right after it if your script is outputting to a browser.
-Explicitly defining the encoding of your strings in every script will save you a lot of headaches down the road.
+Thêm vào đó, nhiều hàm chuỗi trong PHP có tham số tùy chọn cho bạn khai báo character encoding, 
+bạn nên khai báo UTF-8 trong tùy chọn. Ví dụ `htmlentities()` và `htmlspecialchars()` (trong PHP 5.4 
+tùy chọn mặc định của encoding là UTF-8).
 
-Additionally, many PHP functions that operate on strings have an optional parameter letting you specify the character
-encoding. You should always explicitly indicate UTF-8 when given the option. For example, `htmlentities()` has an
-option for character encoding, and you should always specify UTF-8 if dealing with such strings. Note that as of PHP 5.4.0, UTF-8 is the default encoding for `htmlentities()` and `htmlspecialchars()`.
-
-Finally, If you are building a distributed application and cannot be certain that the `mbstring` extension will be
-enabled, then consider using the [patchwork/utf8] Composer package. This will use `mbstring` if it is available, and
-fall back to non UTF-8 functions if not.
+Cuối cùng, nếu bạn đang xây dựng một ứng dụng được phân phối và không chắc rằng `mbstring` có bật hay không, 
+bạn nên sử dụng package [patchwork/utf8] của Composer. Nó sẽ sửng dụng `mbstring` nếu có sẵn, nếu không 
+dùng các hàm non UTF-8.
 
 [Multibyte String Extension]: http://php.net/book.mbstring
 [patchwork/utf8]: https://packagist.org/packages/patchwork/utf8
 
-### UTF-8 at the Database level
+### UTF-8 cấp độ Database
 
-If your PHP script accesses MySQL, there's a chance your strings could be stored as non-UTF-8 strings in the database
-even if you follow all of the precautions above.
+Khi dùng PHP để truy cập MySQL, vẫn có khả năng dữ liệu của bạn sẽ bị lưu dưới dạng non-UTF-8 cho dù bạn 
+đã làm theo các ví dụ bên trên.
 
-To make sure your strings go from PHP to MySQL as UTF-8, make sure your database and tables are all set to the
-`utf8mb4` character set and collation, and that you use the `utf8mb4` character set in the PDO connection string. See
-example code below. This is _critically important_.
+Để lưu chuỗi vào MySQL dạng UTF-8, cài đặt encoding cho Database và các bảng là `utf8mb4`, 
+và dùng `utf8mb4` trong chuỗi kết nối của PDO.
 
-Note that you must use the `utf8mb4` character set for complete UTF-8 support, not the `utf8` character set! See
-Further Reading for why.
+Note that you must use the `utf8mb4` character set for complete UTF-8 support, not the `utf8` 
+character set!
 
-### UTF-8 at the browser level
+### UTF-8 cấp độ trình duyệt
 
-Use the `mb_http_output()` function to ensure that your PHP script outputs UTF-8 strings to your browser.
-
-The browser will then need to be told by the HTTP response that this page should be considered as UTF-8. The historic
-approach to doing that was to include the [charset `<meta>` tag](http://htmlpurifier.org/docs/enduser-utf8.html) in
-your page's `<head>` tag. This approach is perfectly valid, but setting the charset in the `Content-Type` header is
-actually [much faster](https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly).
+Hàm `mb_http_output()` giúp PHP xuất chuỗi UTF-8 ra trình duyệt. 
+Cách khác là dùng thể meta charset
+[charset `<meta>` tag](http://htmlpurifier.org/docs/enduser-utf8.html) trong thẻ `<head>` của trang html. 
+Cách này hợp lệ, nhưng cài đặt charset trong `Content-Type` header sẽ nhanh hơn nhiều 
+[xem thêm](https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly).
 
 {% highlight php %}
 <?php
@@ -121,14 +111,15 @@ header('Content-Type: text/html; charset=UTF-8');
     <body>
         <?php
         foreach($result as $row){
-            print($row->Body);  // This should correctly output our transformed UTF-8 string to the browser
+            print($row->Body);  // This should correctly output our transformed UTF-8 string 
+            to the browser
         }
         ?>
     </body>
 </html>
 {% endhighlight %}
 
-### Further reading
+### Tham khảo
 
 * [PHP Manual: String Operations](http://php.net/language.operators.string)
 * [PHP Manual: String Functions](http://php.net/ref.strings)

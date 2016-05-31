@@ -1,28 +1,30 @@
 ---
+title: Băm password
 isChild: true
 anchor:  password_hashing
 ---
 
-## Password Hashing {#password_hashing_title}
+## Băm password (Password Hashing) {#password_hashing_title}
 
-Eventually everyone builds a PHP application that relies on user login. Usernames and passwords are stored in a
-database and later used to authenticate users upon login.
 
-It is important that you properly [_hash_][3] passwords before storing them. Password hashing is an irreversible, one
-way function performed against the user's password. This produces a fixed-length string that cannot be feasibly
-reversed. This means you can compare a hash against another to determine if they both came from the same source string,
-but you cannot determine the original string. If passwords are not hashed and your database is accessed by an
-unauthorized third-party, all user accounts are now compromised. Some users may (unfortunately) use the same password
-for other services. Therefore, it is important to take security seriously.
+Trong các ứng dụng có chức năng đăng nhập, username và password được lưu trong database và được dùng để xác thcu75  
+khi đăng nhập.
+
+Điều quan trọng là bạn cần [_băm_][3] password trước khi lưu nó vào database. Password hashing là quá trình 
+một chiều, không thể đảo ngược để giấu mật khẩu thực của người dùng. Nó cung cấp một chuỗi có chiều dài cố định , 
+không thể truy ngược, và hai chuỗi giống nhau sau khi băm sẽ trả về cùng một chuỗi. Nếu password không được băm, 
+và database của bạn có thể được truy cập bởi bên thứ ba, khi đó tất cả user của bạn có thể bị mất tải khoản. 
 
 **Hashing passwords with `password_hash`**
 
-In PHP 5.5 `password_hash()` was introduced. At this time it is using BCrypt, the strongest algorithm currently
-supported by PHP. It will be updated in the future to support more algorithms as needed though. The `password_compat`
+In PHP 5.5 `password_hash()` was introduced. At this time it is using BCrypt, 
+the strongest algorithm currently
+supported by PHP. It will be updated in the future to support more algorithms 
+as needed though. The `password_compat`
 library was created to provide forward compatibility for PHP >= 5.3.7.
 
-Below we hash a string, and then check the hash against a new string. Because our two source strings are different
-('secret-password' vs. 'bad-password') this login will fail.
+bên dưới là ví dụ băm chuỗi, và kiểm tra hàm băm lần nữa với chuỗi mới. 
+Bởi vì hai chuỗi gốc khác nhau ('secret-password' vs. 'bad-password') nên login thất bại.
 
 {% highlight php %}
 <?php

@@ -1,5 +1,6 @@
 ---
+title: Luyện tập Coding
 anchor: coding_practices
 ---
 
-# Coding Practices {#coding_practices_title}
+# Luyện tập Coding {#coding_practices_title}

@@ -6,23 +6,25 @@ anchor:  mysql_extension
 
 ## MySQL Extension {#mysql_extension_title}
 
-The [mysql] extension for PHP is incredibly old and has superseded by two other extensions: 
+[Mysql] cho PHP khá là lỗi thời và được thay thế bởi: 
 
 - [mysqli]
 - [pdo]
 
-Not only did development stop long ago on [mysql], but it was [deprecated as of PHP 5.5.0]
-[mysql_deprecated], and **has been [officially removed in PHP 7.0][mysql_removed]**.
+[Mysql] đã bị ngừng phát triển, và [ngưng hỗ trợ trong PHP 5.5.0]
+[mysql_deprecated], và **bị [chính thức loại bỏ trong PHP 7.0][mysql_removed]**.
 
-To save digging into your `php.ini` settings to see which module you are using, one option is to search for `mysql_*` 
-in your editor of choice. If any functions such as `mysql_connect()` and `mysql_query()` show up, then `mysql` is 
-in use.
+Xem xét các cài đặt trong file `php.ini` để thấy các module nào đang được sử dụng. 
+Tìm kiếm `mysql_*` trong project, nếu các hàm như `mysql_connect()` và `mysql_query()` hiện ra thì 
+`mysql` được dùng trong project đó.
 
-Even if you are not using PHP 7.0 yet, failing to consider this upgrade as soon as possible will lead to greater 
-hardship when the PHP 7.0 upgrade does come about. The best option is to replace mysql usage with [mysqli] or [PDO] in 
-your applications within your own development schedules so you won't be rushed later on.
+Ngay cả khi bạn không dùng PHP 7.0 yet, nếu không cập nhật các thay dổi này sớm thì sẽ dẫn tới nhữ khó khăn 
+ không nhỏ khi PHP 7.0 được nân cấp. Lựa chọn tốt nhất là thay thế mysql bằng [mysqli] hay [PDO] trong  
+ứng dụng của bạn.
 
-**If you are upgrading from [mysql] to [mysqli], beware lazy upgrade guides that suggest you can simply find and replace `mysql_*` with `mysqli_*`. Not only is that a gross oversimplification, it misses out on the advantages that mysqli provides, such as parameter binding, which is also offered in [PDO][pdo].**
+**Nếu bạn đang nân cấp từ [mysql] lên [mysqli], bạn chỉ cần thay thế `mysql_*` bằng `mysqli_*` trong các 
+hàm cũ. Nhưng không chỉ có vậy, mysqli còn cung cấp các tính năng mới như parameter binding, 
+tính năng này cũng có trong [PDO][pdo].**
 
 * [PHP: Choosing an API for MySQL][mysql_api]
 * [PDO Tutorial for MySQL Developers][pdo4mysql_devs]

@@ -1,33 +1,35 @@
 ---
+title: Vấn đề phức tạp
 isChild: true
 anchor:  complex_problem
 ---
 
-## Complex Problem {#complex_problem_title}
+## Vấn đề phức tạp (Complex Problem) {#complex_problem_title}
 
-If you have ever read about Dependency Injection then you have probably seen the terms *"Inversion of Control"* or
-*"Dependency Inversion Principle"*. These are the complex problems that Dependency Injection solves.
+Nếu bạn đã nghe về Dependency Injection chắc bạn cũng biết qua các khái niệm 
+*"Inversion of Control"* hoặc 
+*"Dependency Inversion Principle"*. Đó là những vầm đề phức tạp mà Dependency Injection giải quyết.
 
 ### Inversion of Control
 
-Inversion of Control is as it says, "inverting the control" of a system by keeping organisational control entirely
-separate from our objects. In terms of Dependency Injection, this means loosening our dependencies by controlling and
-instantiating them elsewhere in the system.
+Inversion of Control là giành quyền kiểm soát hệ thống bằng cách giữ các organisational control 
+hoàn toàn tách biệt với đối tượng. Trong khái niệm Dependency Injection, có nghĩa là nới lỏng các dependency  
+bằng cách điều khiển và khởi tạo nó nơi náo khác trong hệ thống.
 
-For years, PHP frameworks have been achieving Inversion of Control, however, the question became, which part of control
-are you inverting, and where to? For example, MVC frameworks would generally provide a super object or base controller
-that other controllers must extend to gain access to its dependencies. This **is** Inversion of Control, however,
-instead of loosening dependencies, this method simply moved them.
+Qua nhiều năm, các PHP framework đã hoàn thiện Inversion of Control, tuy nhiên, vấn đề là phần nào và ở đâu.
+Ví dụ, các MVC framework cung cấp một siêu đối tượng hay controller nền để các controller khác kế thừa 
+và truy cập tới các dependency của nó. Đó là Inversion of Control, tuy nhiên thay vì nới lỏng các 
+dependency, phương thức này đơn giản di chuyển chúng.
 
-Dependency Injection allows us to more elegantly solve this problem by only injecting the dependencies we need, when we
-need them, without the need for any hard coded dependencies at all.
+Dependency Injection cho phép chúng giải quyết vấn đề này chỉ bằng injecting các
+dependencies ta cần, khi ta cần chúng, không cần phải hard coded dependencies.
 
 ### Dependency Inversion Principle
 
-Dependency Inversion Principle is the "D" in the S.O.L.I.D set of object oriented design principles that states one
-should *"Depend on Abstractions. Do not depend on concretions."*. Put simply, this means our dependencies should be
-interfaces/contracts or abstract classes rather than concrete implementations. We can easily refactor the above example
-to follow this principle.
+Dependency Inversion Principle là ký tự "D" trong nguyên tắc S.O.L.I.D của lập trình hướng đối tượng 
+phát biểu một class nên *"phụ thuộc vào Abstractions. Không nên phụ thuộc vào concretions."*. Đơn giản có nghĩa  
+các dependency nên là các interfaces/contracts hay abstract classes hơn là các concrete implementations 
+Chúng ta có thể dễ dàng tái cấu trúc ví dụ trên theo nguyên tắc này.
 
 {% highlight php %}
 <?php
@@ -48,14 +50,13 @@ interface AdapterInterface {}
 class MysqlAdapter implements AdapterInterface {}
 {% endhighlight %}
 
-There are several benefits to the `Database` class now depending on an interface rather than a concretion.
+Có vài lợi ích cho class `Database`bây giờ phụ thuộc vào interface hơn là concretion.
 
-Consider that you are working in a team and the adapter is being worked on by a colleague. In our first example, we
-would have to wait for said colleague to finish the adapter before we could properly mock it for our unit tests. Now
-that the dependency is an interface/contract we can happily mock that interface knowing that our colleague will build
-the adapter based on that contract.
+Suy nghĩ nếu bạn đang làm việc với team và adapter đang được làm việc bởi đồng nghiệp. Trong ví dụ đầu tiên, 
+chúng ta phải đợi đồng nghiệp hoàn thành adapter trước khi có thể dùng nó cho Unit tests. Bây giờ, dependency đó 
+là một interface/contract, chúng ta có thể dùng interface đó, biết rằng đồng nghiệp của chúng ta sẽ xây 
+dựng adapter dựa trên đó.
 
-An even bigger benefit to this method is that our code is now much more scalable. If a year down the line we decide
-that we want to migrate to a different type of database, we can write an adapter that implements the original interface
-and inject that instead, no more refactoring would be required as we can ensure that the adapter follows the contract
-set by the interface.
+Lợi ích lớn hơn của phương thức này là code của chúng ta sẽ dễ dàng mở rộng hơn rất nhiều. 
+Nếu bạn muốn dùng một loại database khác, chúng ta có thể viết một adapter kế thừa interface gốc 
+và dùng nó.

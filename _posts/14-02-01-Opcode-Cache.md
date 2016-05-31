@@ -5,18 +5,19 @@ anchor:  opcode_cache
 
 ## Opcode Cache {#opcode_cache_title}
 
-When a PHP file is executed, under the hood it is first compiled to opcodes and, only then, the opcodes are executed.
-If a PHP file is not modified, the opcodes will always be the same. This means that the compilation step is a waste of
-CPU resources.
+Khi file PHP được thực thi, đầu tiên nó được biên dịch sang opcode và, chỉ sau đó, 
+opcode được thực thi.
+Nếu file PHP không được thay đổi, opcode cũng không đổi.
 
-This is where opcode caches come in. They prevent redundant compilation by storing opcodes in memory and reusing it on
-successive calls. Setting up an opcode cache takes a matter of minutes, and your application will speed up
-significantly. There's really no reason not to use it.
+Opcode cache giúp tránh biên dịch không cần thiết bằng cách lưu trữ opcode trong bộ nhớ và dùng lại khi được gọi. 
+Cài dặt opcode cần một khoản thời gian, và ứng dụng của bạn sẽ được tăng tốc đáng kể.
 
-As of PHP 5.5, there is a built-in opcode cache called [OPcache][opcache-book]. It is also available for earlier
-versions.
 
-Read more about opcode caches:
+
+Trong PHP 5.5, có sẵn opcode cache được gọi là [OPcache][opcache-book]. 
+Nó cũng có torng các phiên bản trước.
+
+Xem thêm về opcode cache:
 
 * [OPcache][opcache-book] (built-in since PHP 5.5)
 * [APC] (PHP 5.4 and earlier)

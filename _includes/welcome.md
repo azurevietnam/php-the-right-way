@@ -1,24 +1,27 @@
-# Welcome
+# CHÀO MỪNG BẠN ĐẾN VỚI THẾ GIỚI CỦA PHP!
 
-There's a lot of outdated information on the Web that leads new PHP users astray,
-propagating bad practices and insecure code. _PHP: The Right Way_ is an easy-to-read,
-quick reference for PHP popular coding standards, links to authoritative tutorials
-around the Web and what the contributors consider to be best practices at the present
-time.
 
-_There is no canonical way to use PHP_. This website aims to introduce new PHP
-developers to some topics which they may not discover until it is too late, and aims
-to give seasoned pros some fresh ideas on those topics they've been doing for years
-without ever reconsidering. This website will also not tell you which tools to use, but
-instead offer suggestions for multiple options, when possible explaining the differences
-in approach and use-case.
+Người dịch: Nhân CS [Facebook](https://www.facebook.com/nhaancs) | [Linkedin](linkedin.com/in/nhaancs) | [Twitter](https://twitter.com/nhaancs) | [Github](https://github.com/nhaancs)
 
-This is a living document and will continue to be updated with more helpful information
-and examples as they become available.
+Hiện nay, trên Internet có rất nhiều trang web hướng dẫn PHP. Nhưng đa số cung cấp các thông tin 
+lỗi thời, làm cho các bạn mới học PHP có thể nói là bị "lầm đường lạc lối", phần lớn sử dụng các 
+đoạn code tồi và không an toàn. _PHP: The Right Way_ là một nguồn tham khảo uy tín cho các 
+bạn mới làm quen với PHP, cung cấp các qui chuẩn khi viết code, và liên kết tới các bài 
+hướng dẫn chất lượng, có nội dung tốt tại thời điểm thao khảo.
 
-## Translations
+Không có cách nào là đúng nhất khi sử dụng PHP, điều đó phụ thuộc nhiều vào sở thích và mục
+ đích của lập trình viên. Mục dích của _PHP: The Right Way_ là giới thiệu tới các bạn mới học PHP
+các chủ đề mà khi lập trình PHP cần phải biết qua. Với các lập trình viên PHP có kinh nghiệm 
+thì mục đích của tài liệu này là cung cấp cho các bạn các kiến thức mới về nhữ chủ đề này 
+đôi khi các bạn không cập nhật trong nhiều năm. Tài liệu này không hướng dẫn bạn nên dùng công cụ nào, 
+thay vào đó đưa ra nhiều lựa chọn dựa trên những cách tiếp cận khác nhau và các tình huống khác nhau.
 
-_PHP: The Right Way_ is translated into many different languages:
+Đây là một tài liệu động và sẽ được cập nhật liên tục với các thông tin và ví dụ hữu ích.
+
+## Các bản dịch khác {#translations}
+
+_PHP: The Right Way_ đã được dịch ra nhiều ngôn ngữ khác nhau, 
+trong đó có [Tiếng Việt](https://nhaancs.github.io/php-the-right-way/):
 
 * [English](http://www.phptherightway.com)
 * [Bulgarian](http://bg.phptherightway.com/)
@@ -41,17 +44,18 @@ _PHP: The Right Way_ is translated into many different languages:
 * [Thai](https://apzentral.github.io/php-the-right-way/)
 * [Turkish](http://hkulekci.github.io/php-the-right-way/)
 * [Ukrainian](http://iflista.github.com/php-the-right-way/)
+* [Vietnamese](https://nhaancs.github.io/php-the-right-way/)
 
-## How to Contribute
+## ĐÓNG GÓP {#how-to-contribute}
 
-Help make this website the best resource for new PHP programmers! [Contribute on GitHub][1]
+Để giúp tài liệu này trở thành nguồn tham khảo tốt nhất cho người mới học PHP [đóng góp tới GitHub][1]
 
-## Spread the Word!
+## GIÚP QUẢNG CÁO! {#spread-the-word}
 
-_PHP: The Right Way_ has web banner images you can use on your website. Show your support, and let new PHP developers
-know where to find good information!
+_PHP: The Right Way_ có các ảnh banner bạn có thể dùng để đưa vào website của mình. 
+Thể hiện sự hỗ trợ của bạn, phổ biến tài liệu hữu ích này cho nhiều người biết!
 
-[See Banner Images][2]
+[Tải banner tại đây][2]
 
-[1]: https://github.com/codeguy/php-the-right-way/tree/gh-pages
-[2]: /banners.html
+[1]: https://nhaancs.github.io/php-the-right-way/
+[2]: ./banners.html

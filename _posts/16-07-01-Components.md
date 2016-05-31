@@ -5,19 +5,19 @@ anchor:  components
 
 ## Components {#components_title}
 
-As mentioned above "Components" are another approach to the common goal of creating, distributing and implementing
-shared code. Various component repositories exist, the main two of which are:
+Như đã đề cập "Components" là cách tiếp cận khác tới mục đích của xây dựng, 
+đóng góp and và thi hành code được chia sẻ. Có hai loại component repositories:
 
 * [Packagist]
 * [PEAR]
 
-Both of these repositories have command line tools associated with them to help the installation and upgrade processes,
-and have been explained in more detail in the [Dependency Management] section.
+Cả hai repository có công cụ dòng lệnh liên kết với chúng để hỗ trợ quá trình cài đặt và update, đã được giải thích 
+trong phần [Dependency Management].
 
-There are also component-based frameworks and component-vendors that offer no framework at all. These projects provide
-another source of packages which ideally have little to no dependencies on other packages, or specific frameworks.
+Cũng có các component-based framework và component-vendor không đề nghị mợt framework nào. Những project này cung cấp 
+nguồn khác của các package có ít hoặc không có sự phụ thuộc vào package khác hay một framework nào.
 
-For example, you can use the [FuelPHP Validation package], without needing to use the FuelPHP framework itself.
+Ví dụ, bạn có thể dùng [FuelPHP Validation package], mà không cần dùng FuelPHP.
 
 * [Aura]
 * [FuelPHP]
@@ -25,13 +25,12 @@ For example, you can use the [FuelPHP Validation package], without needing to us
 * [Orno]
 * [Symfony Components]
 * [The League of Extraordinary Packages]
-* Laravel's Illuminate Components
+* Laravel's [Illuminate components]
     * [IoC Container]
     * [Eloquent ORM]
     * [Queue]
 
-_Laravel's [Illuminate components] will become better decoupled from the Laravel framework. For now, only the
-components best decoupled from the Laravel framework are listed above._
+Các [Illuminate components] của Laravel tách biệt khỏi Laravel framework.
 
 
 [Packagist]: /#composer_and_packagist

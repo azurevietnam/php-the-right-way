@@ -1,5 +1,6 @@
 ---
+title: Tài nguyên
 anchor: resources
 ---
 
-# Resources {#resources_title}
+# Tài nguyên {#resources_title} 

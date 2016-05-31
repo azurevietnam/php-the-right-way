@@ -1,19 +1,22 @@
 ---
+title: Bổ sung các công cụ test
 isChild: true
 anchor:  complementary_testing_tools
 ---
 
-## Complementary Testing Tools {#complementary_testing_tools_title}
+## Bổ sung các công cụ test {#complementary_testing_tools_title}
 
-Besides individual testing and behavior driven frameworks, there are also a number of generic frameworks and helper
+Besides individual testing and behavior driven frameworks, there are also a number of 
+generic frameworks and helper
 libraries useful for any preferred approach taken.
+
+Bên cạnh các framework testing riêng biệt và framework cho BDD, có một số framework và thư viện Helper khác như sau: 
 
 ### Tool Links
 
-* [Selenium] is a browser automation tool which can be [integrated with PHPUnit]
-* [Mockery] is a Mock Object Framework which can be integrated with [PHPUnit] or [PHPSpec]
-* [Prophecy] is a highly opinionated yet very powerful and flexible PHP object mocking framework. It's integrated with
-[PHPSpec] and can be used with [PHPUnit].
+* [Selenium] là công cụ trình duyệt tự động có thể [kết hợp với PHPUnit]
+* [Mockery] là Mock Object Framework có thể kết hợp với [PHPUnit] hay [PHPSpec]
+* [Prophecy] là một framework rất mạnh mẽ và linh hoạt. Được kết hợp với [PHPSpec] và có thể dùng với [PHPUnit].
 
 
 [Selenium]: http://seleniumhq.org/

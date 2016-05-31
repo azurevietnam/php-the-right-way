@@ -1,15 +1,12 @@
 ---
 layout: page
-title:  The Basics
+title:  Phần cơ bản
 sitemap: true
 ---
 
-# The Basics
+# Phần cơ bản
 
-## Comparison operators
-
-Comparison operators are an often overlooked aspect of PHP, which can lead to many unexpected outcomes. One such
-problem stems from strict comparisons (the comparison of booleans as integers).
+## Toán tử so sánh
 
 {% highlight php %}
 <?php
@@ -23,7 +20,8 @@ var_dump($a === '5');    // compare type/value (integer vs. string); return fals
 /**
  * Strict comparisons
  */
-if (strpos('testing', 'test')) {    // 'test' is found at position 0, which is interpreted as the boolean 'false'
+if (strpos('testing', 'test')) {    // 'test' is found at position 0, which is 
+interpreted as the boolean 'false'
     // code...
 }
 
@@ -38,13 +36,12 @@ if (strpos('testing', 'test') !== false) {    // true, as strict comparison was 
 * [Comparison table](http://php.net/types.comparisons)
 * [Comparison cheatsheet](http://phpcheatsheets.com/index.php?page=compare)
 
-## Conditional statements
+## Câu lệnh điều kiện
 
-### If statements
+### Câu lệnh điều kiện If
 
-While using 'if/else' statements within a function or class, there is a common misconception that 'else' must be used
-in conjunction to declare potential outcomes. However if the outcome is to define the return value, 'else' is not
-necessary as 'return' will end the function, causing 'else' to become moot.
+Khi dùng câu lệnh 'if/else' bên trong hàm hay class, có 1 quan niệm sai là phải dùng 'else'. Tuy nhiên 
+nếu hàm trả về một giá trị, 'else' không cần thiết bởi vì 'return' sẽ kết thúc hàm.
 
 {% highlight php %}
 <?php
@@ -78,14 +75,15 @@ function test($a)
 
 * [If statements](http://php.net/control-structures.if)
 
-### Switch statements
+### Câu lệnh Switch
 
-Switch statements are a great way to avoid typing endless if's and elseif's, but there are a few things to be aware of:
+Câu lệnh switch là cách tốt để tránh gõ quá nhiều lần if và elseif, có vài điều bạn cần lưu ý:
 
-- Switch statements only compare values, and not the type (equivalent to '==')
-- They Iterate case by case until a match is found. If no match is found, then the default is used (if defined)
-- Without a 'break', they will continue to implement each case until reaching a break/return
-- Within a function, using 'return' alleviates the need for 'break' as it ends the function
+- Câu lệnh switch chỉ so sánh giá trị, không so sánh kiểu dữ liệu (giống như '==')
+- Nó sẽ lặp lại qua trình so sánh cho tới khi tìm được giá trị đúng. Nếu không tìm được giá trị đúng, giá 
+trị default sẽ được thực thi, nếu đã được khai báo.
+- Không có lệnh 'break', nó sẽ tiếp tục thực thi mỗi trường hợp cho đế khi nào có lệnh break hay return.
+- Bên trong hàm, dùng 'return' làm giảm bớt nhu cầu của  'break' khi nó kết thúc hàm.
 
 {% highlight php %}
 <?php
@@ -112,10 +110,10 @@ function test($a)
 * [Switch statements](http://php.net/control-structures.switch)
 * [PHP switch](http://phpswitch.com/)
 
-## Global namespace
+## Global namespace (namespace toàn cục)
 
-When using namespaces, you may find that internal functions are hidden by functions you wrote. To fix this, refer to
-the global function by using a backslash before the function name.
+Khi dùng namespace, bạn có thể thấy rằng các hàm có sẵn trong PHP sẽ bị ẩn bởi các function bạn đã viết.
+Để khắc phục, lên kết tới global function bằng cách sử dụng đấu xuyệt ngược trước tên hàm.
 
 {% highlight php %}
 <?php
@@ -129,7 +127,8 @@ function fopen()
 
 function array()
 {
-    $iterator = new \ArrayIterator();    // ArrayIterator is an internal class. Using its name without a backslash
+    $iterator = new \ArrayIterator();    // ArrayIterator is an internal class. Using its name 
+    without a backslash
                                          // will attempt to resolve it within your namespace.
 }
 {% endhighlight %}
@@ -137,13 +136,13 @@ function array()
 * [Global space](http://php.net/language.namespaces.global)
 * [Global rules](http://php.net/userlandnaming.rules)
 
-## Strings
+## Chuỗi
 
-### Concatenation
+### Nối chuỗi
 
-- If your line extends beyond the recommended line length (120 characters), consider concatenating your line
-- For readability it is best to use concatenation operators over concatenating assignment operators
-- While within the original scope of the variable, indent when concatenation uses a new line
+- Nếu chuỗi dài quá 120 ký tự mỗi dòng, bạn nên dùng nối chuỗi.
+- Để cho code dễ đọc, bạn nên dùng toán tử '.=' cho phép gán.
+- Khi nối chuỗi trên nhiều dòng cần canh chỉnh lề cho các dòng tiếp theo.
 
 
 {% highlight php %}
@@ -161,19 +160,16 @@ $a = 'Multi-line example'      // concatenation operator (.)
 
 * [String Operators](http://php.net/language.operators.string)
 
-### String types
+### Các kiểu chuỗi
 
-Strings are a series of characters, which should sound fairly simple. That said, there are a few different types of
-strings and they offer slightly different syntax, with slightly different behaviors.
+Chuỗi là một tập hợp các ký tự, và có một số kiểu chuỗi khác nhau, nó cung cấp cú pháp hơi khác nhau, với các trạng thái khác nhau.
 
-#### Single quotes
+#### Dấu nháy đơn
 
-Single quotes are used to denote a "literal string". Literal strings do not attempt to parse special characters or
-variables.
+Dấu nháy đơn biểu thị chuỗi bình thường, không bao gồm các ký tự đặc biệt hay là biến.
 
-If using single quotes, you could enter a variable name into a string like so: `'some $thing'`, and you would see the
-exact output of `some $thing`. If using double quotes, that would try to evaluate the `$thing` variable name and show
-errors if no variable was found.
+Nếu dùng dấu nháy đơn thì `echo 'some $thing'` sẽ xuất ra màn hình `some $thing`. 
+Dấu nháy đôi thì PHP sẽ tìm giá trị của biến `$thing` và hiển thị lỗi nếu biến không được tìm thấy.
 
 
 {% highlight php %}
@@ -189,10 +185,9 @@ echo 'This is my string, look at how pretty it is.';    // no need to parse a si
 
 * [Single quote](http://php.net/language.types.string#language.types.string.syntax.single)
 
-#### Double quotes
+#### Dấu nháy đôi
 
-Double quotes are the Swiss Army Knife of strings. They will not only parse variables as mentioned above, but all sorts
-of special characters, like `\n` for newline, `\t` for a tab, etc.
+Dấu nháy đôi không chỉ phân tích biến như đề cập ở trên, mà còn cả các ký tự đặt biệt, như `\n`, `\t`,...
 
 {% highlight php %}
 <?php
@@ -206,7 +201,6 @@ echo "phptherightway is $adjective.\n I love learning $code!"  // Instead of mul
                                                                // enables us to use a parsable string
 {% endhighlight %}
 
-Double quotes can contain variables; this is called "interpolation".
 
 {% highlight php %}
 <?php
@@ -214,10 +208,7 @@ $juice = 'plum';
 echo "I like $juice juice";    // Output: I like plum juice
 {% endhighlight %}
 
-When using interpolation, it is often the case that the variable will be touching another character. This will result
-in some confusion as to what is the name of the variable, and what is a literal character.
-
-To fix this problem, wrap the variable within a pair of curly brackets.
+Dùng câp dấu ngoặc nhọn cho tên biến để tránh nhầm lẫn `echo "I drank some juice made of {$juice}s";`.
 
 {% highlight php %}
 <?php
@@ -239,10 +230,10 @@ echo "I drank some juice made of {$juice[1]}s";   // $juice[1] will be parsed
 
 * [Double quotes](http://php.net/language.types.string#language.types.string.syntax.double)
 
-#### Nowdoc syntax
+#### Cú pháp Nowdoc
 
-Nowdoc syntax was introduced in 5.3 and internally behaves the same way as single quotes except it is suited toward the
-use of multi-line strings without the need for concatenating.
+Cú pháp Nowdocv được giới thiệu trong 5.3 hoạt động giống như dấu nháy đơn nhưng có thể viết chuỗi nhiều dòng và không cần 
+phải nối chuỗi.
 
 {% highlight php %}
 <?php
@@ -265,10 +256,10 @@ EOD;                        // closing 'EOD' must be on it's own line, and to th
 
 * [Nowdoc syntax](http://php.net/language.types.string#language.types.string.syntax.nowdoc)
 
-#### Heredoc syntax
+#### Cú pháp Heredoc
 
-Heredoc syntax internally behaves the same way as double quotes except it is suited toward the use of multi-line
-strings without the need for concatenating.
+Cú pháp Heredoc được giới thiệu trong 5.3 hoạt động giống như dấu nháy đôi nhưng có thể viết chuỗi nhiều dòng và không cần 
+phải nối chuỗi.
 
 {% highlight php %}
 <?php
@@ -293,29 +284,21 @@ EOD;                        // closing 'EOD' must be on it's own line, and to th
 
 * [Heredoc syntax](http://php.net/language.types.string#language.types.string.syntax.heredoc)
 
-### Which is quicker?
+### Cái nào nhanh hơn?
 
-There is a myth floating around that single quote strings are fractionally quicker than double quote strings. This is
-fundamentally not true.
+Có một sai lầm là người ta thường nghĩ rằng dấu nháy đơn sẽ nhanh hơn nháy đôi, điều đó không đúng.
 
-If you are defining a single string and not trying to concatenate values or anything complicated, then either a single
-or double quoted string will be entirely identical. Neither are quicker.
+Nếu bạn chỉ khai báo một chuỗi đơn giản, không có nối biến và không có gì phức tạp thì cả hai cách là như nhau.
 
-If you are concatenating multiple strings of any type, or interpolate values into a double quoted string, then the
-results can vary. If you are working with a small number of values, concatenation is minutely faster. With a lot of
-values, interpolating is minutely faster.
-
-Regardless of what you are doing with strings, none of the types will ever have any noticeable impact on your
-application. Trying to rewrite code to use one or the other is always an exercise in futility, so avoid this micro-
-optimization unless you really understand the meaning and impact of the differences.
+Nếu bạn nối nhiều loại chuỗi khác nhau, hay nối biến vào nháy đôi thì kết quả sẽ khác nhau. Nếu làm việc với ít giá trị 
+, phép nối chuỗi sẽ nhanh hơn, nếu làm việc với nhiều giá trị, dấu nhay đôi sẽ nhanh hơn.
 
 * [Disproving the Single Quotes Performance Myth](http://nikic.github.io/2012/01/09/Disproving-the-Single-Quotes-Performance-Myth.html)
 
 
-## Ternary operators
+## Toán tử tam nguyên (Ternary operators)
 
-Ternary operators are a great way to condense code, but are often used in excess. While ternary operators can be
-stacked/nested, it is advised to use one per line for readability.
+Toán tử tam nguyên làm cho code thêm súc tích, nhưng thường bị lạm dụng. 
 
 {% highlight php %}
 <?php
@@ -323,14 +306,14 @@ $a = 5;
 echo ($a == 5) ? 'yay' : 'nay';
 {% endhighlight %}
 
-In comparison, here is an example that sacrifices all forms of readability for the sake of reducing the line count.
+
 
 {% highlight php %}
 <?php
-echo ($a) ? ($a == 5) ? 'yay' : 'nay' : ($b == 10) ? 'excessive' : ':(';    // excess nesting, sacrificing readability
+echo ($a) ? ($a == 5) ? 'yay' : 'nay' : ($b == 10) ? 'excessive' : ':(';    // excess nesting, 
+sacrificing readability
 {% endhighlight %}
 
-To 'return' a value with ternary operators use the correct syntax.
 
 {% highlight php %}
 <?php
@@ -344,8 +327,7 @@ return ($a == 5) ? 'yay' : 'nope';    // this example will return 'yay'
 
 {% endhighlight %}
 
-It should be noted that you do not need to use a ternary operator for returning a boolean value. An example of this
-would be.
+Không cần dùng toán tử tam nguyên để trả về giá trị `true/false`
 
 {% highlight php %}
 <?php
@@ -359,12 +341,11 @@ return $a == 3; // Will return true or false if $a == 3
 
 {% endhighlight %}
 
-This can also be said for all operations(===, !==, !=, == etc).
+Tương tự với `===, !==, !=, ==, ...`.
 
-#### Utilising brackets with ternary operators for form and function
+#### Sử dụng ngoặc đơn cho toán tử tam nguyên
 
-When utilising a ternary operator, brackets can play their part to improve code readability and also to include unions
-within blocks of statements. An example of when there is no requirement to use bracketing is:
+Sử dụng ngoặc đơn cho toán tử tam nguyên giúp code dễ đọc hơn.
 
 {% highlight php %}
 <?php
@@ -377,32 +358,25 @@ $a = 3;
 return $a == 3 ? "yay" : "nope"; // return yay or nope if $a == 3
 {% endhighlight %}
 
-Bracketing also affords us the capability of creating unions within a statement block where the block will be checked
-as a whole. Such as this example below which will return true if both ($a == 3 and $b == 4) are true and $c == 5 is
-also true.
-
 {% highlight php %}
 <?php
 return ($a == 3 && $b == 4) && $c == 5;
 {% endhighlight %}
-
-Another example is the snippet below which will return true if ($a != 3 AND $b != 4) OR $c == 5.
 
 {% highlight php %}
 <?php
 return ($a != 3 && $b != 4) || $c == 5;
 {% endhighlight %}
 
-Since PHP 5.3, it is possible to leave out the middle part of the ternary operator.
-Expression "expr1 ?: expr3" returns expr1 if expr1 evaluates to TRUE, and expr3 otherwise.
+Từ PHP 5.3, có thể bỏ đi phần giữ của toán tử tam nguyên.
+Biểu thức "expr1 ?: expr3" trả về expr1 nếu expr1 là TRUE, và ngược lại trả về expr3.
 
-* [Ternary operators](http://php.net/language.operators.comparison)
+* [Toán tử tam nguyên](http://php.net/language.operators.comparison)
 
-## Variable declarations
+## Khai báo biến
 
-At times, coders attempt to make their code "cleaner" by declaring predefined variables with a different name. What
-this does in reality is to double the memory consumption of said script. For the example below, let us say an example
-string of text contains 1MB worth of data, by copying the variable you've increased the scripts execution to 2MB.
+Để giữ cho code "sạch sẽ" các lập trình viên thường khai báo các biến đã được định nghĩa với các tên khác nhau. Điều 
+đó làm tăng gấp đôi dung lượng bộ nhớ sử dụng.
 
 {% highlight php %}
 <?php
@@ -414,4 +388,4 @@ echo $about;
 echo 'A very long string of text';        // uses 1MB memory
 {% endhighlight %}
 
-* [Performance tips](http://web.archive.org/web/20140625191431/https://developers.google.com/speed/articles/optimizing-php)
+* [Các thủ thuật cải thiện hiệu năng](http://web.archive.org/web/20140625191431/https://developers.google.com/speed/articles/optimizing-php)

@@ -1,64 +1,55 @@
 ---
+title: Cài đặt PHP trên MAC
 isChild: true
 anchor:  mac_setup
 ---
 
-## Mac Setup {#mac_setup_title}
+## Cài đặt PHP trên MAC {#mac_setup_title}
 
-OS X comes prepackaged with PHP but it is normally a little behind the latest stable. Mavericks has 5.4.17,
-Yosemite has 5.5.9 and El Capitan has 5.5.29, but with PHP 7.0 out that is often not good enough.
 
-There are multiple ways to install PHP on OS X.
+Có nhiều cách để cài đặt PHP trên OS X.
 
-### Install PHP via Homebrew
+### Cài PHP từ Homebrew
 
-[Homebrew] is a powerful package manager for OS X, which can help you install PHP and various extensions easily.
-[Homebrew PHP] is a repository that contains PHP-related "formulae" for Homebrew, and will let you install PHP.
+[Homebrew] là một package manager mạnh mẽ cho OS X, sẽ giúp chúng ta cài đặt PHP và các phần mở rộng dễ dàng.
+[Homebrew PHP] Chứa cách cài đặt PHP cho Homebrew.
 
-At this point, you can install `php53`, `php54`, `php55`, `php56` or `php70` using the `brew install` command, and switch
-between them by modifying your `PATH` variable. Alternatively you can use [brew-php-switcher][brew-php-switcher] which will switch automatically for you.
+Bạn có thể cài `php53`, `php54`, `php55`, `php56` hoặc `php70` dùng câu lệnh `brew install`, và chuyển đổi
+qua lại giữa chúng bằng cách thay đổi biến `PATH`. Bạn có thể dùng [brew-php-switcher][brew-php-switcher] để chuyển đồi một cách tự động.
 
-### Install PHP via Macports
+### Cài đặt qua Macports
 
-The [MacPorts] Project is an open-source community initiative to design an
-easy-to-use system for compiling, installing, and upgrading either
-command-line, X11 or Aqua based open-source software on the OS X operating
-system.
+[MacPorts] là một dự án mã nguồn mở để thiết kế một hệ thống dễ sử dụng cho biên dịch, cài đặt và nâng cấp 
+ngay cả trên command-line, X11 hay Aqua dựa vào các phần mềm mã nguồn mở trên OS X.
 
-MacPorts supports pre-compiled binaries, so you don't need to recompile every
-dependencies from the source tarball files, it saves your life if you don't
-have any package installed on your system.
 
-At this point, you can install `php54`, `php55`, `php56` or `php70` using the `port install` command, for example:
+Hiện tại bạn có thể cài `php54`, `php55`, `php56` hay `php70` bằng lệnh `port install`, ví dụ:
 
     sudo port install php56
     sudo port install php70
 
-And you can run `select` command to switch your active php:
+Dùng lệnh `select` để chuyển phiên bản PHP:
 
     sudo port select --set php php70
 
-### Install PHP via phpbrew
+### Cài từ phpbrew
 
-[phpbrew] is a tool for installing and managing multiple PHP versions. This can be really useful if two different
-applications/projects require different versions of PHP, and you are not using virtual machines.
+[phpbrew] có thể cài đặt và quản lý nhiều phiên bản PHP khác nhau, rất hữu ích nếu bạn có hai project
+ chạy trên hai phiên bản PHP khác nhau.
 
-### Install PHP via Liip's binary installer
+### Cài đặt với [Liip's binary installer][php-osx.liip.ch]
 
-Another popular option is [php-osx.liip.ch] which provides one liner installation methods for versions 5.3 through 7.0.
-It doesn't overwrite the php binaries installed by Apple, but installs everything in a separate location (/usr/local/php5).
+Nó không ghi đè lên phiên bản PHP mà MAC đã cài, mà cài đặt trên một thư mục khác (/usr/local/php5).
 
-### Compile from Source
+### Biên dịch từ Source
 
-Another option that gives you control over the version of PHP you install, is to [compile it yourself][mac-compile].
-In that case be sure to have installed either [Xcode][xcode-gcc-substitution] or Apple's substitute
-["Command Line Tools for XCode"] downloadable from Apple's Mac Developer Center.
+[compile it yourself][mac-compile].
+Bạn cần cài [Xcode][xcode-gcc-substitution] hoặc Apple's substitute
+["Command Line Tools for XCode"] tải trên Apple's Mac Developer Center.
 
 ### All-in-One Installers
 
-The solutions listed above mainly handle PHP itself, and do not supply things like Apache, Nginx or a SQL server.
-"All-in-one" solutions such as [MAMP][mamp-downloads] and [XAMPP][xampp] will install these other bits of software for
-you and tie them all together, but ease of setup comes with a trade-off of flexibility.
+"All-in-one" installers như [MAMP][mamp-downloads] and [XAMPP][xampp] sẽ cài đặt PHP và Apache, Nginx hoặc SQL server.
 
 
 [Homebrew]: http://brew.sh/

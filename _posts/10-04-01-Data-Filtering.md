@@ -1,63 +1,62 @@
 ---
+title: Lọc dữ liệu
 isChild: true
 anchor:  data_filtering
 ---
 
-## Data Filtering {#data_filtering_title}
+## Lọc dữ liệu (Data Filtering) {#data_filtering_title}
 
-Never ever (ever) trust foreign input introduced to your PHP code. Always sanitize and validate foreign input before
-using it in code. The `filter_var()` and `filter_input()` functions can sanitize text and validate text formats (e.g.
-email addresses).
+KHông bao giờ tin tưởng các input bên ngoài vào code PHP của bạn. 
+Luôn luôn làm sạch and validate các input bên ngoài trước khi sử dụng trong code 
+Hàm `filter_var()` và `filter_input()` có thể làm sạch text và validate các chuỗi định dạng (như địa chỉ email).
 
-Foreign input can be anything: `$_GET` and `$_POST` form input data, some values in the `$_SERVER` superglobal, and the
-HTTP request body via `fopen('php://input', 'r')`. Remember, foreign input is not limited to form data submitted by the
-user. Uploaded and downloaded files, session values, cookie data, and data from third-party web services are foreign
-input, too.
+Các input bên ngoài có thể là mọi thứ: `$_GET` và `$_POST`, vài giá trị của `$_SERVER` và 
+HTTP request body của hàm `fopen('php://input', 'r')`. Nhớ rằng các input bên ngoài không chỉ giới hạn ở các 
+dữ liêu mà người dùng nhập. Các file được upload và download, giá trị của session, cookie và dữ liêu của bên thứ ba 
+cũng là input ngoại.
+Khi các dữ liệu bên ngoài có thể được lưu trữ, kết hợp, và truy cập sau này, nó vẫn là input ngoài. Mỗi khi 
+bạn xuất ra, thực thi, nối, hay kéo dữ liêu vào code, hãy chắc rằng nó đã được lọc và có thể tin tưởng.
 
-While foreign data can be stored, combined, and accessed later, it is still foreign input. Every time you process,
-output, concatenate, or include data in your code, ask yourself if the data is filtered properly and can it be trusted.
+Dữ liệu có thể được lọc khác nhau tùy theo mục đích của chúng. Ví dụ khi input không được lọc được xuất ra HTML, 
+nó có thể thực thi HTML và javascript trên trang của bạn! Đây là một dạng tấn công khá nguy hiểm (Cross-Site Scripting - XSS). 
+Dùng hàm `strip_tags()` để loại bỏ các thẻ html và escape các ký tự đặt biệt dùng hàm `htmlentities()` hoặc `htmlspecialchars()`.
 
-Data may be _filtered_ differently based on its purpose. For example, when unfiltered foreign input is passed into HTML
-page output, it can execute HTML and JavaScript on your site! This is known as Cross-Site Scripting (XSS) and can be a
-very dangerous attack. One way to avoid XSS is to sanitize all user-generated data before outputting it to your page by
-removing HTML tags with the `strip_tags()` function or escaping characters with special meaning into their respective
-HTML entities with the `htmlentities()` or `htmlspecialchars()` functions.
+Một ví dụ khác là truyền vào các tùy chọn khi thực thi trên giao diện dòng lệnh. Điều này cực kỳ nguy hiểm, 
+và thường là một ý tưởng tồi. Nhưng bạn có thể dùng hàm có sẵn là `escapeshellarg()` để làm sạch các tham số truyền 
+qua dòng lệnh.
 
-Another example is passing options to be executed on the command line. This can be extremely dangerous (and is usually
-a bad idea), but you can use the built-in `escapeshellarg()` function to sanitize the executed command's arguments.
 
-One last example is accepting foreign input to determine a file to load from the filesystem. This can be exploited by
-changing the filename to a file path. You need to remove `"/"`, `"../"`, [null bytes][6], or other characters from the
-file path so it can't load hidden, non-public, or sensitive files.
+Một ví dụ cuối cùng là việc chấp nhận input ngoại để xác dịnh file nào sẽ load trong hệ thống file. Điều này 
+ có thể bị khai thác bằng cách đổi tên file thành một đường dẫn. Bạn cần phải gỡ bỏ `"/"`, `"../"`, [null bytes][6], 
+ hay các ký tự khác có trong đường dẫn để nó không thể mở các file nhạy cảm.
 
 * [Learn about data filtering][1]
 * [Learn about `filter_var`][4]
 * [Learn about `filter_input`][5]
 * [Learn about handling null bytes][6]
 
-### Sanitization
+### Làm sạch dữ liệu (Sanitization)
 
-Sanitization removes (or escapes) illegal or unsafe characters from foreign input.
+Làm sạch sữ liệu loại bỏ (hay escapes) các ký tự không hợp lệ hay không an toàn từ input ngoại.
 
-For example, you should sanitize foreign input before including the input in HTML or inserting it into a raw SQL query.
-When you use bound parameters with [PDO](#databases), it will sanitize the input for you.
+Ví dụ, bạn có thể làm sạch dữ liệu bên ngoài trước khi xuất ra HTML hay đưa vào câu truy vấn SQL với tính năng 
+bind parameter của [PDO](#databases)
 
-Sometimes it is required to allow some safe HTML tags in the input when including it in the HTML page. This is very
-hard to do and many avoid it by using other more restricted formatting like Markdown or BBCode, although whitelisting
-libraries like [HTML Purifier][html-purifier] exists for this reason.
+Đôi khi bạn phải chấp nhận một số thẻ HTML an toàn, đây là một việc khó khăn và nhiều lập trình viên đã tránh 
+việc này bằng cách sử dụng các định dạng khác như Markdown hay BBCode, mặc dù thư viện [HTML Purifier][html-purifier] cũng thực hiện được điều này.
 
 [See Sanitization Filters][2]
 
-### Unserialization
+### Giải mã đối tượng (Unserialization)
 
-It is dangerous to `unserialize()` data from users or other untrusted sources.  Doing so can allow malicious users to instantiate objects (with user-defined properties) whose destructors will be executed, **even if the objects themselves aren't used**.  You should therefore avoid unserializing untrusted data.
-
-If you absolutely must unserialize data from untrusted sources, use PHP 7's [`allowed_classes`][unserialize] option to restrict which object types are allowed to be unserialized.
+Thật nguy hiểm khi `unserialize()` từ người dùng hay các nguồn không đáng tin cậy.  
+Làm như vậy có thể cho phép một số người dùng ác ý có thể khởi tạo đối tượng (với các thuộc tính mà người dùng khai báo). 
+Vì vậy bạn nên tránh `unserialize()` các dữ liệu không đáng tin. Trong trường hợp bắt buột phải làm như vậy 
+sử dụng tùy chọn [`allowed_classes`][unserialize] của PHP7 để loại đối tượng nào đươc phép unserialize.
 
 ### Validation
 
-Validation ensures that foreign input is what you expect. For example, you may want to validate an email address, a
-phone number, or age when processing a registration submission.
+Validate các input ngoại chứa các dữ liệu được mong đợi. Ví dụ, bạn có thể muốn validate địa chỉ email, số điện thoại, tuổi, ...
 
 [See Validation Filters][3]
 
